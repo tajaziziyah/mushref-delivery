@@ -322,6 +322,22 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
 .bn-t{font-size:.95rem;font-weight:900;}
 .bn-s{font-size:.79rem;opacity:.88;margin-top:2px;}
 
+/* ═══════════ STORE LOCATION MODAL ═══════════ */
+.sloc-modal{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px;}
+.sloc-card{background:var(--white);border-radius:var(--r-lg);width:100%;max-width:560px;overflow:hidden;box-shadow:var(--shadow-lg);}
+.sloc-head{background:var(--blue);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
+.sloc-head h3{font-size:1rem;font-weight:800;}
+.sloc-close{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:.85rem;font-weight:700;}
+#sloc-map{height:300px;}
+.sloc-info{padding:14px 18px;background:var(--cream);border-top:2px solid var(--border);}
+.sloc-addr{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:10px;min-height:22px;}
+.sloc-foot{padding:14px 18px;display:flex;gap:8px;justify-content:flex-end;border-top:1px solid var(--border);}
+
+/* ═══════════ STORE LOCATION BANNER ═══════════ */
+.store-loc-bar{background:var(--blue-light);border:2px solid #bfdbfe;border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.slb-info{font-size:.86rem;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:7px;}
+.slb-info.done{color:var(--green);}
+
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-track{background:var(--cream);}
 ::-webkit-scrollbar-thumb{background:var(--warm);border-radius:3px;}
@@ -429,6 +445,7 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
   <div class="lbox">
     <div class="lbox-title" id="ltitle">🔐 اختر دورك للمتابعة</div>
     <div class="lf hide" id="phone-f">
+      <div><div class="lf-lbl">📧 البريد الإلكتروني</div><input type="email" id="l-email" class="lf-inp" placeholder="example@email.com" dir="ltr"></div>
       <div><div class="lf-lbl">📱 رقم جوالك</div><input type="tel" id="l-phone" class="lf-inp" placeholder="05xxxxxxxx" dir="ltr"></div>
       <div><div class="lf-lbl">👤 اسمك</div><input type="text" id="l-name" class="lf-inp" placeholder="اسمك الكريم"></div>
     </div>
@@ -518,6 +535,12 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
       <div class="hero-pill">✅ اعتمد ← 🚴 يذهب فوراً</div>
     </div>
     <div class="hero-m"><div style="font-size:60px;background:linear-gradient(135deg,#e63329,#c41f1f);height:100%;display:flex;align-items:center;justify-content:center">🏬</div></div>
+  </div>
+
+  <!-- شريط موقع المحل -->
+  <div class="store-loc-bar" id="store-loc-bar">
+    <div class="slb-info" id="store-loc-info">📍 موقع محلك غير محدد</div>
+    <button class="btn btn-blue btn-sm" onclick="openSlocFromStore()">📍 حدد موقع محلك</button>
   </div>
 
   <div class="stats">
@@ -615,7 +638,7 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
     <div class="hero-c">
       <div class="hero-eye">لوحة الإدارة</div>
       <div class="hero-t">🎯 متابعة شاملة</div>
-      <div class="hero-s">100 عميل | 50 محل | 4 موصلين</div>
+      <div class="hero-s">7 محلات | 4 موصلين</div>
       <div class="hero-pill">تحديث كل 5 ثوانٍ</div>
     </div>
     <div class="hero-m"><div style="font-size:60px;background:linear-gradient(135deg,#1e1b4b,#3730a3);height:100%;display:flex;align-items:center;justify-content:center">🎯</div></div>
@@ -679,10 +702,7 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
       </div>
 
       <div class="manage-panel" id="mp-stores">
-        <div class="tw"><table>
-          <thead><tr><th>المحل</th><th>إجمالي الطلبات</th><th>المعتمدة</th><th>المسلّمة</th><th>المرفوضة</th></tr></thead>
-          <tbody id="stores-tb"></tbody>
-        </table></div>
+        <div id="stores-admin-list"></div>
       </div>
 
       <div class="manage-panel" id="mp-stats">
@@ -700,6 +720,28 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
 
 </main>
 </div>
+<!-- نافذة تحديد موقع المحل -->
+<div class="sloc-modal" id="sloc-modal" style="display:none">
+  <div class="sloc-card">
+    <div class="sloc-head">
+      <h3>📍 تحديد موقع المحل: <span id="sloc-name"></span></h3>
+      <button class="sloc-close" onclick="closeSlocModal()">✕ إغلاق</button>
+    </div>
+    <div id="sloc-map"></div>
+    <div class="sloc-info">
+      <div class="sloc-addr" id="sloc-addr">🔴 انقر على الخريطة أو اضغط GPS لتحديد الموقع</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-blue btn-sm" onclick="slocGPS()">📡 GPS تلقائي</button>
+        <button class="btn btn-ghost btn-sm" id="sloc-clear" onclick="slocClear()" style="display:none">🗑️ مسح</button>
+      </div>
+    </div>
+    <div class="sloc-foot">
+      <button class="btn btn-ghost" onclick="closeSlocModal()">إلغاء</button>
+      <button class="btn btn-green" id="sloc-save" onclick="saveSlocModal()" disabled>✅ حفظ الموقع</button>
+    </div>
+  </div>
+</div>
+
 <div id="toasts"></div>
 
 <script>
@@ -707,7 +749,7 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
 // CONFIG & STATE
 // ══════════════════════════════════════════════════════════
 const ADMIN_PIN = '444444';
-const DRV_PINS  = {'333333':'أحمد','334444':'سعد','335555':'فهد','336666':'خالد'};
+const DRV_PINS  = {'333333':'سبايدر مان','334444':'باتمان','335555':'سوبر مان','336666':'طرزان'};
 const ST = {
   pending:  {l:'⏳ معلق',        c:'b-pend'},
   available:{l:'🟢 معروض',       c:'b-avail'},
@@ -744,7 +786,7 @@ function calcDrv(n){
 function calcAll(doneOrders){
   let at=0; const r={};
   Object.values(DRV_PINS).forEach(n=>{
-    const c=doneOrders.filter(o=>o.driver_name===n).length;
+    const c=doneOrders.filter(o=>o.driver_name===n||o.driver===n).length;
     const e=calcDrv(c); r[n]={c,drv:e.drv,adm:e.adm}; at+=e.adm;
   });
   r._a=at; return r;
@@ -816,6 +858,8 @@ window.onload=()=>{
   localStorage.setItem('w_db','supabase');
   localStorage.setItem('w_sburl',SB_URL);
   localStorage.setItem('w_sbkey',SB_KEY);
+  // تحميل مواقع المحلات المحفوظة مسبقاً
+  loadSavedStoreLocs();
   cPhone=localStorage.getItem('w_phone')||null;
   cName=localStorage.getItem('w_cname')||null;
   document.getElementById('setup').style.display='none';
@@ -960,36 +1004,31 @@ async function updateDriverPos(lat,lng){
 // STORES LOCAL (للـ Sheets)
 // ══════════════════════════════════════════════════════════
 const STORES_LOCAL=[
-  {name:'بقالة مشرف',     icon:'🛒',pin:'200100',lat:24.1520,lng:47.3250,phone:'0501234567',desc:'بقالة متكاملة — خضار وطعام ومواد غذائية'},
-  {name:'مطعم مندي الخرج',icon:'🍔',pin:'200200',lat:24.1525,lng:47.3255,phone:'0502345678',desc:'مندي وكبسة ومشاوي'},
-  {name:'ورود وهدايا',    icon:'🌹',pin:'200300',lat:24.1515,lng:47.3245,phone:'0503456789',desc:'باقات ورد وهدايا مميزة'},
-  {name:'محل الشاهي',     icon:'🍵',pin:'200400',lat:24.1530,lng:47.3260,phone:'0504567890',desc:'شاي وقهوة وتمر'},
-  {name:'كوفي الدانة',    icon:'☕',pin:'200500',lat:24.1510,lng:47.3240,phone:'0505678901',desc:'مشروبات ساخنة وباردة'},
-  {name:'لقيمات',         icon:'🍩',pin:'200600',lat:24.1535,lng:47.3265,phone:'0506789012',desc:'لقيمات طازجة يومياً'},
-  {name:'فوال تميس',      icon:'🫘',pin:'200700',lat:24.1505,lng:47.3235,phone:'0507890123',desc:'فول وتميس وفطور'},
-  {name:'مغسلة ملابس',   icon:'🧺',pin:'200800',lat:24.1540,lng:47.3270,phone:'0508901234',desc:'غسيل وكي وتنظيف جاف'},
-  {name:'محل حلويات',     icon:'🍬',pin:'200900',lat:24.1500,lng:47.3230,phone:'0509012345',desc:'حلويات شرقية وغربية'},
-  {name:'فطائر',          icon:'🥟',pin:'201000',lat:24.1545,lng:47.3275,phone:'0500123456',desc:'فطائر بأنواعها'},
-  {name:'خضروات وفواكه',  icon:'🥦',pin:'201100',lat:24.1495,lng:47.3225,phone:'0511234567',desc:'خضار وفواكه طازجة'},
-  {name:'ملحمة',          icon:'🥩',pin:'201200',lat:24.1550,lng:47.3280,phone:'0512345678',desc:'لحوم ودجاج طازج'},
-  {name:'مطبق وسمبوسة',   icon:'🥠',pin:'201300',lat:24.1490,lng:47.3220,phone:'0513456789',desc:'مطبق وسمبوسة ومشبك'},
+  {name:'الصالحية',       icon:'🛒',pin:'200100',lat:24.1520,lng:47.3250,phone:'0540298934',desc:'بقالة الصالحية — مواد غذائية متنوعة'},
+  {name:'مطعم مندي الخرج',icon:'🍖',pin:'200200',lat:24.1525,lng:47.3255,phone:'0557552620',desc:'مندي وكبسة ومشاوي'},
+  {name:'بروستد برونتو',  icon:'🍗',pin:'200300',lat:24.1515,lng:47.3245,phone:'0537465464',desc:'بروستد وشاورما'},
+  {name:'كوفي دانه',      icon:'☕',pin:'200400',lat:24.1530,lng:47.3260,phone:'0534891295',desc:'مشروبات ساخنة وباردة'},
+  {name:'لقيمات سنابل',   icon:'🍩',pin:'200500',lat:24.1510,lng:47.3240,phone:'0507816577',desc:'لقيمات طازجة يومياً'},
+  {name:'مطبق المحترف',   icon:'🥟',pin:'200600',lat:24.1535,lng:47.3265,phone:'0509176820',desc:'مطبق وسمبوسة ومشبك'},
+  {name:'عصرة عنب',       icon:'🍇',pin:'200700',lat:24.1505,lng:47.3235,phone:'0508886966',desc:'عصائر طازجة'},
 ];
 
 function buildStorePicker(){
   const list=stores.length?stores:STORES_LOCAL;
   document.getElementById('spick').innerHTML=list.map(s=>
-    `<div class="store-row ${selStore===s.name?'sel':''}" onclick="pickSt('${s.name}')" id="st_${s.name.replace(/[\s]/g,'_')}">
-      <div style="display:flex;align-items:center;gap:12px;flex:1">
-        <div style="font-size:1.8rem;flex-shrink:0">${s.icon||'🏪'}</div>
-        <div style="flex:1">
-          <div style="font-size:.98rem;font-weight:800">${s.name}</div>
-          <div style="font-size:.76rem;color:var(--muted);margin-top:2px">${s.desc||''}</div>
+    `<div class="store-row ${selStore===s.name?'sel':''}" onclick="pickSt('${s.name.replace(/'/g,"\\'")}')">
+      <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0">
+        <div style="font-size:2rem;flex-shrink:0">${s.icon||'🏪'}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:1rem;font-weight:800">${s.name}</div>
+          <div style="font-size:.75rem;color:var(--muted);margin-top:1px">${s.desc||''}</div>
+          <div style="display:flex;gap:6px;margin-top:7px;flex-wrap:wrap" onclick="event.stopPropagation()">
+            ${s.phone?`<a href="tel:${s.phone}" style="background:var(--green);color:#fff;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:4px">📞 اتصال</a>`:''}
+            ${s.phone?`<a href="https://wa.me/966${s.phone.substring(1)}?text=${encodeURIComponent('السلام عليكم، أود الطلب من '+s.name)}" target="_blank" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:4px">💬 واتساب</a>`:''}
+          </div>
         </div>
       </div>
-      <div style="display:flex;gap:7px;flex-shrink:0" onclick="event.stopPropagation()">
-        ${s.phone?`<a href="tel:${s.phone}" style="background:var(--green);color:#fff;border-radius:8px;padding:6px 10px;font-size:.76rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">📞 اتصال</a>`:''}
-        ${s.phone?`<a href="https://wa.me/966${s.phone.substring(1)}?text=السلام عليكم، أود الطلب من ${s.name}" target="_blank" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 10px;font-size:.76rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">💬 واتساب</a>`:''}
-      </div>
+      <div style="flex-shrink:0;color:${selStore===s.name?'var(--accent)':'var(--border)'};font-size:1.3rem">✓</div>
     </div>`).join('');
 }
 function pickSt(n){
@@ -1041,12 +1080,12 @@ function initClientMap(){
 
   mapClient.on('click',e=>setClientLocation(e.latlng.lat,e.latlng.lng));
 
-  // GPS تلقائي فوراً
-  mapClient.locate({setView:true,maxZoom:16});
+  // GPS تلقائي فوراً بصمت
+  mapClient.locate({setView:true,maxZoom:17,enableHighAccuracy:true});
   mapClient.on('locationfound',e=>setClientLocation(e.latlng.lat,e.latlng.lng));
   mapClient.on('locationerror',()=>{
     const st=document.getElementById('map-client-status');
-    if(st) st.innerHTML='<span style="color:var(--accent);font-weight:700">⚠️ انقر على الخريطة لتحديد موقعك</span>';
+    if(st) st.innerHTML='<span style="color:var(--muted);font-size:.78rem">انقر على الخريطة لتحديد موقعك يدوياً</span>';
   });
 }
 
@@ -1145,6 +1184,8 @@ function pickRole(r){
   const t={client:'👤 دخول العميل',store:'🏬 دخول المحل',driver:'🚴 دخول الموصل',admin:'🎯 دخول الإدارة'};
   document.getElementById('ltitle').textContent=t[r]||'🔐 اختر دورك';
   if(isC){
+    const savedEmail=localStorage.getItem('w_email')||'';
+    if(savedEmail) document.getElementById('l-email').value=savedEmail;
     if(cPhone)document.getElementById('l-phone').value=cPhone;
     if(cName)document.getElementById('l-name').value=cName;
   }else{document.getElementById('pin-in').focus();}
@@ -1154,12 +1195,14 @@ function doLogin(){
   const er=document.getElementById('lerr'); er.style.display='none';
   if(!pRole){er.textContent='⚠️ اختر دورك أولاً';er.style.display='block';return;}
   if(pRole==='client'){
+    const em=document.getElementById('l-email').value.trim();
     const ph=document.getElementById('l-phone').value.trim();
     const nm=document.getElementById('l-name').value.trim();
+    if(!em||!em.includes('@')){er.textContent='⚠️ أدخل بريد إلكتروني صحيح';er.style.display='block';return;}
     if(!ph||ph.length<9){er.textContent='⚠️ أدخل رقم جوال صحيح';er.style.display='block';return;}
     if(!nm){er.textContent='⚠️ أدخل اسمك';er.style.display='block';return;}
     role='client'; cPhone=ph; cName=nm;
-    localStorage.setItem('w_phone',ph); localStorage.setItem('w_cname',nm);
+    localStorage.setItem('w_phone',ph); localStorage.setItem('w_cname',nm); localStorage.setItem('w_email',em);
   }else{
     const pin=document.getElementById('pin-in').value.trim();
     if(pRole==='store'){
@@ -1203,11 +1246,13 @@ function enterApp(){
     document.getElementById('dtitle').textContent='📦 طلباتي — '+drName;
   }
   showPage('pg-'+role);
-  // إخفاء الإعدادات عن العميل والمحل
+  // إخفاء الإعدادات — للإدارة فقط
   const setupBtn=document.getElementById('setup-btn');
-  if(setupBtn) setupBtn.style.display=(role==='admin'||role==='driver')?'':'none';
+  if(setupBtn) setupBtn.style.display=(role==='admin')?'':'none';
   // تشغيل الصوت تلقائياً
   try{if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();sndOn=true;document.getElementById('sndbtn').textContent='🔔';}catch(e){}
+  // تحميل مواقع المحلات المحفوظة
+  loadSavedStoreLocs();
   fetchAll();
   const interval=role==='driver'?5000:8000;
   timer=setInterval(fetchAll,interval);
@@ -1217,6 +1262,7 @@ function enterApp(){
     if(role==='client') initClientMap();
     if(role==='driver') initDriverMap();
     if(role==='admin')  initAdminMap();
+    if(role==='store')  updateStoreLocBar();
   },300);
 
   // تحديث موقع الموصل كل 30 ثانية
@@ -1542,19 +1588,31 @@ function renderAdmin(){
     dtb.innerHTML=drvStats.join('');
   }
 
-  // جدول المحلات
-  const stb=document.getElementById('stores-tb');
-  if(stb){
+  // جدول المحلات مع تحديد الموقع
+  const sal=document.getElementById('stores-admin-list');
+  if(sal){
     const list2=stores.length?stores:STORES_LOCAL;
-    stb.innerHTML=list2.map(s=>{
-      const sOrders=orders.filter(o=>o.store===s.name);
-      return `<tr><td><b>${s.icon||'🏪'} ${s.name}</b></td>
-        <td style="font-weight:800">${sOrders.length}</td>
-        <td style="color:var(--blue);font-weight:700">${sOrders.filter(o=>['available','dispatched','picked'].includes(o.status)).length}</td>
-        <td style="color:var(--green);font-weight:700">${sOrders.filter(o=>o.status==='delivered').length}</td>
-        <td style="color:var(--accent);font-weight:700">${sOrders.filter(o=>o.status==='rejected').length}</td>
-      </tr>`;
-    }).join('');
+    sal.innerHTML=`
+      <div style="margin-bottom:12px;font-size:.82rem;color:var(--muted);padding:0 2px">انقر على 📍 لتحديد أو تعديل موقع أي محل</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+      ${list2.map(s=>{
+        const sOrders=orders.filter(o=>o.store===s.name);
+        const hasLoc=s.lat&&s.lng&&s.lat!==24.1520;
+        return `<div style="background:var(--cream);border:2px solid ${hasLoc?'#86efac':'#d8d0c8'};border-radius:var(--r);padding:12px 15px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+            <div style="font-size:1.6rem">${s.icon||'🏪'}</div>
+            <div>
+              <div style="font-size:.95rem;font-weight:800">${s.name}</div>
+              <div style="font-size:.75rem;color:${hasLoc?'var(--green)':'var(--accent)'};margin-top:2px;font-weight:700">
+                ${hasLoc?`✅ موقع محدد (${Number(s.lat).toFixed(4)}, ${Number(s.lng).toFixed(4)})`:'⚠️ موقع غير محدد'}
+              </div>
+              <div style="font-size:.75rem;color:var(--muted);margin-top:1px">طلبات: ${sOrders.length} | مسلّمة: ${sOrders.filter(o=>o.status==='delivered').length}</div>
+            </div>
+          </div>
+          <button class="btn btn-blue btn-sm" onclick="openSlocAdmin('${s.name.replace(/'/g,"\\'")}')">📍 ${hasLoc?'تعديل الموقع':'تحديد الموقع'}</button>
+        </div>`;
+      }).join('')}
+      </div>`;
   }
 
   // إحصائيات
@@ -1574,6 +1632,143 @@ function renderAdmin(){
 }
 
 function var_(n){const m={'blue':'var(--blue)','green':'var(--green)','accent':'var(--accent)','accent2':'var(--accent2)'};return m[n]||'var(--blue)';}
+
+// ══════════════════════════════════════════════════════════
+// STORE LOCATION — تحديد موقع المحل
+// ══════════════════════════════════════════════════════════
+let slocMap=null, slocMarker=null, slocLat=null, slocLng=null, slocStoreName=null;
+
+function openSlocAdmin(name){
+  slocStoreName=name;
+  _openSlocModal(name);
+}
+function openSlocFromStore(){
+  slocStoreName=stName;
+  _openSlocModal(stName);
+}
+
+function _openSlocModal(name){
+  slocLat=null; slocLng=null; slocMarker=null;
+  document.getElementById('sloc-name').textContent=name;
+  document.getElementById('sloc-addr').textContent='🔴 انقر على الخريطة أو اضغط GPS لتحديد الموقع';
+  document.getElementById('sloc-save').disabled=true;
+  document.getElementById('sloc-clear').style.display='none';
+  document.getElementById('sloc-modal').style.display='flex';
+
+  // تهيئة الخريطة بعد ظهور المودال
+  setTimeout(()=>{
+    if(slocMap){ slocMap.remove(); slocMap=null; }
+    // ابحث عن الموقع الحالي للمحل
+    const list=stores.length?stores:STORES_LOCAL;
+    const store=list.find(s=>s.name===name);
+    const initLat=store?.lat||DEFAULT_LAT;
+    const initLng=store?.lng||DEFAULT_LNG;
+    slocMap=L.map('sloc-map',{zoomControl:true,attributionControl:false}).setView([initLat,initLng],16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(slocMap);
+
+    // إذا عنده موقع مسبق ضع ماركر
+    if(store?.lat&&store?.lng&&store.lat!==24.1520){
+      slocLat=store.lat; slocLng=store.lng;
+      _placeSlocMarker(store.lat,store.lng,true);
+    }
+
+    slocMap.on('click',async e=>{
+      slocLat=e.latlng.lat; slocLng=e.latlng.lng;
+      _placeSlocMarker(slocLat,slocLng,false);
+      document.getElementById('sloc-addr').textContent='⏳ جاري جلب العنوان...';
+      const addr=await reverseGeocode(slocLat,slocLng);
+      document.getElementById('sloc-addr').textContent=addr?'📍 '+addr:'📍 تم تحديد الموقع';
+    });
+  },100);
+}
+
+function _placeSlocMarker(lat,lng,silent){
+  if(slocMarker) slocMap.removeLayer(slocMarker);
+  slocMarker=L.marker([lat,lng],{
+    draggable:true,
+    icon:L.divIcon({className:'',html:`<div style="background:var(--accent);color:#fff;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:20px;border:3px solid #fff;box-shadow:0 3px 12px rgba(0,0,0,.3)">🏪</div>`,iconAnchor:[18,18]})
+  }).addTo(slocMap);
+  slocMarker.on('dragend',async e=>{
+    const p=e.target.getLatLng();
+    slocLat=p.lat; slocLng=p.lng;
+    document.getElementById('sloc-addr').textContent='⏳ جاري جلب العنوان...';
+    const addr=await reverseGeocode(slocLat,slocLng);
+    document.getElementById('sloc-addr').textContent=addr?'📍 '+addr:'📍 تم تحديد الموقع';
+  });
+  document.getElementById('sloc-save').disabled=false;
+  document.getElementById('sloc-clear').style.display='inline-flex';
+  if(!silent) slocMap.setView([lat,lng],17);
+}
+
+function slocGPS(){
+  document.getElementById('sloc-addr').textContent='⏳ جاري تحديد موقعك...';
+  navigator.geolocation?.getCurrentPosition(async pos=>{
+    slocLat=pos.coords.latitude; slocLng=pos.coords.longitude;
+    _placeSlocMarker(slocLat,slocLng,false);
+    const addr=await reverseGeocode(slocLat,slocLng);
+    document.getElementById('sloc-addr').textContent=addr?'📍 '+addr:'📍 تم تحديد موقعك';
+  },()=>{
+    document.getElementById('sloc-addr').textContent='⚠️ تعذر GPS — انقر على الخريطة يدوياً';
+  },{enableHighAccuracy:true,timeout:10000});
+}
+
+function slocClear(){
+  if(slocMarker){slocMap.removeLayer(slocMarker);slocMarker=null;}
+  slocLat=null; slocLng=null;
+  document.getElementById('sloc-save').disabled=true;
+  document.getElementById('sloc-clear').style.display='none';
+  document.getElementById('sloc-addr').textContent='🔴 انقر على الخريطة أو اضغط GPS لتحديد الموقع';
+}
+
+function saveSlocModal(){
+  if(!slocLat||!slocLng){toast('حدد الموقع أولاً','er');return;}
+  // حفظ في STORES_LOCAL
+  const list=stores.length?stores:STORES_LOCAL;
+  const store=list.find(s=>s.name===slocStoreName);
+  if(store){ store.lat=slocLat; store.lng=slocLng; }
+  // حفظ في localStorage
+  const saved=JSON.parse(localStorage.getItem('w_store_locs')||'{}');
+  saved[slocStoreName]={lat:slocLat,lng:slocLng};
+  localStorage.setItem('w_store_locs',JSON.stringify(saved));
+  toast('✅ تم حفظ موقع '+slocStoreName,'ok');
+  closeSlocModal();
+  // تحديث شريط المحل إذا كان هو المسجّل
+  if(role==='store'&&slocStoreName===stName) updateStoreLocBar();
+  // تحديث الخرائط
+  if(mapClient){mapClient.remove();mapClient=null;setTimeout(initClientMap,300);}
+  if(mapAdmin){refreshAdminMap();}
+  renderPage();
+}
+
+function closeSlocModal(){
+  document.getElementById('sloc-modal').style.display='none';
+  if(slocMap){slocMap.remove();slocMap=null;}
+}
+
+function loadSavedStoreLocs(){
+  const saved=JSON.parse(localStorage.getItem('w_store_locs')||'{}');
+  const list=stores.length?stores:STORES_LOCAL;
+  Object.keys(saved).forEach(name=>{
+    const s=list.find(x=>x.name===name);
+    if(s){s.lat=saved[name].lat;s.lng=saved[name].lng;}
+  });
+}
+
+function updateStoreLocBar(){
+  const list=stores.length?stores:STORES_LOCAL;
+  const s=list.find(x=>x.name===stName);
+  const bar=document.getElementById('store-loc-bar');
+  const info=document.getElementById('store-loc-info');
+  if(!bar||!info)return;
+  if(s?.lat&&s?.lng&&s.lat!==24.1520){
+    info.className='slb-info done';
+    info.textContent='✅ موقع محلك محدد';
+    bar.style.borderColor='#86efac';bar.style.background='var(--green-light)';
+  } else {
+    info.className='slb-info';
+    info.textContent='📍 موقع محلك غير محدد — حدده للموصلين';
+  }
+}
 
 // ══════════════════════════════════════════════════════════
 // NOTIFICATIONS & SOUND
