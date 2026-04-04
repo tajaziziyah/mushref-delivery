@@ -16,149 +16,155 @@
   --blue:#1a3a6b;--blue2:#2563eb;--blue-light:#eff6ff;
   --green:#0f7c4a;--green-light:#f0fdf4;
   --muted:#6b7280;--border:#c8d5e8;
-  --white:#fff;--shadow:0 2px 16px rgba(26,58,107,.08);--shadow-lg:0 8px 40px rgba(26,58,107,.15);
+  --white:#fff;
+  --shadow:0 2px 16px rgba(26,58,107,.08);
+  --shadow-lg:0 8px 40px rgba(26,58,107,.15);
   --r:14px;--r-lg:22px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
 body{font-family:'Tajawal',sans-serif;background:var(--paper);color:var(--ink);font-size:17px;min-height:100vh;overflow-x:hidden;}
 
-/* LOGIN */
+/* ── LOGIN ── */
 #login{position:fixed;inset:0;z-index:4000;display:none;overflow-y:auto;}
-.login-bg{min-height:100vh;background:linear-gradient(160deg,#0f2550 0%,#1a3a6b 50%,#0f2550 100%);padding:22px 16px 100px;display:flex;align-items:center;justify-content:center;}
-.login-wrap{width:100%;max-width:440px;}
-.brand{text-align:center;margin-bottom:28px;}
-.brand-logo{width:88px;height:88px;margin:0 auto 14px;border-radius:24px;background:linear-gradient(135deg,#ff8c42,#e65c00);display:flex;align-items:center;justify-content:center;font-size:46px;box-shadow:0 8px 28px rgba(230,92,0,.4);border:3px solid rgba(255,255,255,.25);}
-.brand h1{font-size:2rem;font-weight:900;color:#fff;letter-spacing:-1px;}
+.login-bg{min-height:100vh;background:linear-gradient(160deg,#0f2550 0%,#1a3a6b 55%,#0f2550 100%);padding:24px 16px 100px;display:flex;align-items:center;justify-content:center;}
+.login-wrap{width:100%;max-width:430px;}
+.brand{text-align:center;margin-bottom:26px;}
+.brand-logo{width:86px;height:86px;margin:0 auto 13px;border-radius:22px;background:linear-gradient(135deg,#ff8c42,#e65c00);display:flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 8px 28px rgba(230,92,0,.45);border:3px solid rgba(255,255,255,.22);}
+.brand h1{font-size:1.95rem;font-weight:900;color:#fff;letter-spacing:-1px;}
 .brand h1 em{color:#ff8c42;font-style:normal;}
-.brand p{color:rgba(255,255,255,.55);font-size:.88rem;margin-top:4px;}
-.main-roles{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
-.main-rc{background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.18);border-radius:20px;cursor:pointer;transition:all .25s;}
-.main-rc:hover{transform:translateY(-3px);border-color:rgba(255,140,66,.6);}
-.main-rc.sel{border-color:#ff8c42;background:rgba(255,140,66,.18);box-shadow:0 0 0 3px rgba(255,140,66,.2);}
-.main-rc-body{padding:24px 16px;text-align:center;}
-.main-rc-icon{font-size:2.8rem;margin-bottom:10px;display:block;}
-.main-rc-name{font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:4px;}
-.main-rc-desc{font-size:.78rem;color:rgba(255,255,255,.55);}
-.main-rc-badge{display:inline-block;margin-top:9px;background:rgba(255,140,66,.25);color:#ffb877;font-size:.7rem;font-weight:700;padding:3px 11px;border-radius:20px;border:1px solid rgba(255,140,66,.4);}
-.mini-roles{display:flex;justify-content:center;gap:16px;margin-bottom:18px;}
-.mini-rc{display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;padding:8px 18px;border-radius:12px;border:1.5px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);transition:all .2s;}
-.mini-rc:hover{background:rgba(255,255,255,.12);}
-.mini-rc.sel{border-color:#ff8c42;background:rgba(255,140,66,.15);}
-.mini-rc-icon{font-size:1.4rem;}
-.mini-rc-name{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.6);}
-.lbox{background:rgba(255,255,255,.09);backdrop-filter:blur(16px);border:2px solid rgba(255,255,255,.15);border-radius:18px;padding:22px;}
-.lbox-title{font-size:1rem;font-weight:800;color:#fff;margin-bottom:14px;}
-.lf{display:flex;flex-direction:column;gap:10px;margin-bottom:6px;}
+.brand p{color:rgba(255,255,255,.52);font-size:.87rem;margin-top:4px;}
+/* البطاقتان الرئيسيتان */
+.main-roles{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:14px;}
+.main-rc{background:rgba(255,255,255,.09);border:2px solid rgba(255,255,255,.16);border-radius:18px;cursor:pointer;transition:all .25s;}
+.main-rc:hover{transform:translateY(-3px);border-color:rgba(255,140,66,.55);}
+.main-rc.sel{border-color:#ff8c42;background:rgba(255,140,66,.17);box-shadow:0 0 0 3px rgba(255,140,66,.18);}
+.main-rc-body{padding:22px 14px;text-align:center;}
+.main-rc-icon{font-size:2.6rem;margin-bottom:9px;display:block;}
+.main-rc-name{font-size:1.05rem;font-weight:900;color:#fff;margin-bottom:3px;}
+.main-rc-desc{font-size:.76rem;color:rgba(255,255,255,.52);}
+.main-rc-badge{display:inline-block;margin-top:8px;background:rgba(255,140,66,.22);color:#ffb877;font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(255,140,66,.35);}
+/* أيقونات صغيرة */
+.mini-roles{display:flex;justify-content:center;gap:14px;margin-bottom:16px;}
+.mini-rc{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;padding:8px 16px;border-radius:11px;border:1.5px solid rgba(255,255,255,.11);background:rgba(255,255,255,.05);transition:all .2s;}
+.mini-rc:hover{background:rgba(255,255,255,.11);}
+.mini-rc.sel{border-color:#ff8c42;background:rgba(255,140,66,.14);}
+.mini-rc-icon{font-size:1.35rem;}
+.mini-rc-name{font-size:.66rem;font-weight:700;color:rgba(255,255,255,.58);}
+/* صندوق الدخول */
+.lbox{background:rgba(255,255,255,.08);backdrop-filter:blur(16px);border:2px solid rgba(255,255,255,.14);border-radius:16px;padding:20px;}
+.lbox-title{font-size:.98rem;font-weight:800;color:#fff;margin-bottom:13px;}
+.lf{display:flex;flex-direction:column;gap:9px;margin-bottom:5px;}
 .lf.hide{display:none;}
-.lf-lbl{font-size:.86rem;font-weight:700;color:rgba(255,255,255,.8);}
-.lf-inp{font-family:'Tajawal',sans-serif;width:100%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.18);border-radius:11px;padding:13px 15px;color:#fff;font-size:1rem;outline:none;transition:border-color .2s;}
-.lf-inp::placeholder{color:rgba(255,255,255,.3);}
+.lf-lbl{font-size:.84rem;font-weight:700;color:rgba(255,255,255,.78);}
+.lf-inp{font-family:'Tajawal',sans-serif;width:100%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.17);border-radius:10px;padding:12px 14px;color:#fff;font-size:.97rem;outline:none;transition:border-color .2s;}
+.lf-inp::placeholder{color:rgba(255,255,255,.28);}
 .lf-inp:focus{border-color:#ff8c42;}
-.pin-w{display:none;flex-direction:column;gap:8px;margin-bottom:6px;}
+.pin-w{display:none;flex-direction:column;gap:7px;margin-bottom:5px;}
 .pin-w.show{display:flex;}
-.pin-i{font-family:'Tajawal',sans-serif;width:100%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.18);border-radius:11px;padding:14px;color:#fff;font-size:1.4rem;letter-spacing:10px;text-align:center;outline:none;transition:border-color .2s;}
+.pin-i{font-family:'Tajawal',sans-serif;width:100%;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.17);border-radius:10px;padding:13px;color:#fff;font-size:1.4rem;letter-spacing:10px;text-align:center;outline:none;transition:border-color .2s;}
 .pin-i:focus{border-color:#ff8c42;}
-.enter-btn{width:100%;font-family:'Tajawal',sans-serif;font-size:1.05rem;font-weight:800;background:linear-gradient(135deg,#ff8c42,#e65c00);color:#fff;border:none;border-radius:12px;padding:15px;cursor:pointer;margin-top:12px;transition:all .2s;box-shadow:0 4px 18px rgba(230,92,0,.4);}
+.enter-btn{width:100%;font-family:'Tajawal',sans-serif;font-size:1.02rem;font-weight:800;background:linear-gradient(135deg,#ff8c42,#e65c00);color:#fff;border:none;border-radius:11px;padding:14px;cursor:pointer;margin-top:11px;transition:all .2s;box-shadow:0 4px 18px rgba(230,92,0,.38);}
 .enter-btn:hover{transform:translateY(-1px);}
-.l-err{color:#ffb3b3;font-size:.84rem;text-align:center;margin-top:8px;display:none;}
-.l-hint{text-align:center;font-size:.72rem;color:rgba(255,255,255,.3);margin-top:12px;}
+.l-err{color:#ffb3b3;font-size:.83rem;text-align:center;margin-top:7px;display:none;}
+.l-hint{text-align:center;font-size:.7rem;color:rgba(255,255,255,.28);margin-top:11px;}
 
-/* APP */
+/* ── APP ── */
 #app{display:none;}
-.nav{background:var(--blue);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:300;box-shadow:0 2px 14px rgba(13,33,64,.4);}
-.nav-brand{display:flex;align-items:center;gap:9px;color:#fff;font-size:.98rem;font-weight:900;}
-.nav-ico{width:34px;height:34px;background:var(--accent);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;}
-.nav-r{display:flex;align-items:center;gap:7px;}
-.dot{width:9px;height:9px;border-radius:50%;background:#4ade80;}
+.nav{background:var(--blue);height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;position:sticky;top:0;z-index:300;box-shadow:0 2px 14px rgba(13,33,64,.4);}
+.nav-brand{display:flex;align-items:center;gap:8px;color:#fff;font-size:.96rem;font-weight:900;}
+.nav-ico{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.nav-r{display:flex;align-items:center;gap:6px;}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;}
 .dot.loading{background:#fbbf24;animation:blink .8s infinite;}
 .dot.error{background:#f87171;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.rpill{font-size:.73rem;font-weight:800;padding:5px 12px;border-radius:20px;white-space:nowrap;}
-.rp-c{background:rgba(255,255,255,.15);color:#fff;}
-.rp-s{background:rgba(212,160,23,.25);color:#fde68a;}
-.rp-d{background:rgba(15,124,74,.25);color:#86efac;}
-.rp-a{background:rgba(230,51,41,.25);color:#fca5a5;}
-.nb{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.18);color:#fff;font-family:'Tajawal',sans-serif;font-size:.74rem;font-weight:700;padding:5px 10px;border-radius:8px;cursor:pointer;transition:all .2s;}
-main{max-width:1080px;margin:0 auto;padding:20px 15px;}
+.rpill{font-size:.71rem;font-weight:800;padding:4px 11px;border-radius:20px;white-space:nowrap;}
+.rp-c{background:rgba(255,255,255,.14);color:#fff;}
+.rp-s{background:rgba(212,160,23,.22);color:#fde68a;}
+.rp-d{background:rgba(15,124,74,.22);color:#86efac;}
+.rp-a{background:rgba(230,51,41,.22);color:#fca5a5;}
+.nb{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.16);color:#fff;font-family:'Tajawal',sans-serif;font-size:.72rem;font-weight:700;padding:5px 9px;border-radius:7px;cursor:pointer;transition:all .2s;}
+.nb:hover{background:rgba(255,255,255,.2);}
+main{max-width:1080px;margin:0 auto;padding:18px 14px;}
 .page{display:none;}.page.active{display:block;}
 
-/* HERO */
-.hero{border-radius:var(--r-lg);overflow:hidden;display:flex;min-height:145px;margin-bottom:20px;box-shadow:var(--shadow-lg);}
-.hero-c{flex:1;padding:22px 26px;display:flex;flex-direction:column;justify-content:center;}
-.hero-eye{font-size:.74rem;font-weight:700;opacity:.75;letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;color:rgba(255,255,255,.75);}
-.hero-t{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:4px;line-height:1.2;}
-.hero-s{font-size:.83rem;color:rgba(255,255,255,.78);}
-.hero-pill{display:inline-block;margin-top:8px;background:rgba(255,255,255,.2);color:#fff;font-size:.74rem;font-weight:700;padding:4px 12px;border-radius:20px;}
+/* ── HERO ── */
+.hero{border-radius:var(--r-lg);overflow:hidden;display:flex;min-height:138px;margin-bottom:18px;box-shadow:var(--shadow-lg);}
+.hero-c{flex:1;padding:20px 24px;display:flex;flex-direction:column;justify-content:center;}
+.hero-eye{font-size:.72rem;font-weight:700;opacity:.72;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;color:rgba(255,255,255,.72);}
+.hero-t{font-size:1.38rem;font-weight:900;color:#fff;margin-bottom:4px;line-height:1.2;}
+.hero-s{font-size:.82rem;color:rgba(255,255,255,.76);}
+.hero-pill{display:inline-block;margin-top:8px;background:rgba(255,255,255,.18);color:#fff;font-size:.72rem;font-weight:700;padding:4px 11px;border-radius:20px;}
 .h-blue{background:linear-gradient(135deg,#1a3a6b,#0f2550);}
-.h-fire{background:linear-gradient(135deg,#c41f1f,#e65c00);}
-.h-forest{background:linear-gradient(135deg,#065f38,#0f7c4a);}
-.h-night{background:linear-gradient(135deg,#1e1b4b,#3730a3);}
-.h-orange{background:linear-gradient(135deg,#e65c00,#ff8c42);}
+.h-fire{background:linear-gradient(135deg,#b81a1a,#e65c00);}
+.h-forest{background:linear-gradient(135deg,#055535,#0f7c4a);}
+.h-night{background:linear-gradient(135deg,#1a1740,#3730a3);}
 
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
-.stat{background:var(--white);border:2px solid var(--border);border-radius:var(--r);padding:16px 12px;text-align:center;box-shadow:var(--shadow);}
-.stat-n{font-size:2rem;font-weight:900;line-height:1;}
-.stat-l{font-size:.74rem;color:var(--muted);margin-top:4px;font-weight:600;}
+/* ── STATS ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:16px;}
+.stat{background:var(--white);border:2px solid var(--border);border-radius:var(--r);padding:14px 10px;text-align:center;box-shadow:var(--shadow);}
+.stat-n{font-size:1.9rem;font-weight:900;line-height:1;}
+.stat-l{font-size:.72rem;color:var(--muted);margin-top:3px;font-weight:600;}
 
-/* SECTION */
-.sec{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow);}
-.sec-h{padding:14px 20px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;background:var(--cream);}
-.sec-h h2{font-size:1rem;font-weight:800;display:flex;align-items:center;gap:7px;}
-.sec-b{padding:20px;}
+/* ── SECTION ── */
+.sec{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow);}
+.sec-h{padding:13px 18px;border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;background:var(--cream);}
+.sec-h h2{font-size:.97rem;font-weight:800;display:flex;align-items:center;gap:6px;}
+.sec-b{padding:18px;}
 
-/* STORE PICKER */
-.spick{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
-.store-row{background:var(--cream);border:2px solid var(--border);border-radius:var(--r);padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .2s;}
+/* ── STORE PICKER ── */
+.spick{display:flex;flex-direction:column;gap:7px;margin-bottom:12px;}
+.store-row{background:var(--cream);border:2px solid var(--border);border-radius:var(--r);padding:11px 13px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:all .2s;}
 .store-row:hover{border-color:var(--blue2);background:var(--white);}
-.store-row.sel{border-color:var(--accent);background:#fff5f5;border-width:2.5px;}
+.store-row.sel{border-color:var(--accent);background:#fff5f0;border-width:2.5px;}
 
-/* TRACKING BAR — خط المحطات */
-.track-bar{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);padding:20px 18px;margin-bottom:16px;box-shadow:var(--shadow);}
-.track-title{font-size:.82rem;font-weight:800;color:var(--muted);margin-bottom:16px;text-align:center;}
-.track-steps{display:flex;align-items:center;position:relative;justify-content:space-between;}
-.track-line{position:absolute;top:18px;right:10%;left:10%;height:4px;background:var(--border);border-radius:2px;z-index:0;}
-.track-progress{position:absolute;top:18px;right:10%;height:4px;background:linear-gradient(to left,var(--accent2),var(--accent));border-radius:2px;z-index:1;transition:width .6s ease;}
-.track-step{display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:2;flex:1;}
-.track-dot{width:36px;height:36px;border-radius:50%;background:var(--border);border:3px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all .4s;box-shadow:0 2px 8px rgba(0,0,0,.1);}
-.track-dot.done{background:var(--blue);border-color:var(--blue-light);}
-.track-dot.now{background:var(--accent);border-color:#ffd0b5;animation:pring 1.6s infinite;}
-@keyframes pring{0%,100%{box-shadow:0 0 0 0 rgba(230,92,0,.4)}50%{box-shadow:0 0 0 8px rgba(230,92,0,0)}}
-.track-lbl{font-size:.6rem;color:var(--muted);font-weight:700;text-align:center;line-height:1.3;max-width:50px;}
+/* ── TRACKING STEPS ── */
+.track-bar{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);padding:18px 14px 14px;margin-bottom:14px;box-shadow:var(--shadow);}
+.track-title{font-size:.78rem;font-weight:800;color:var(--muted);margin-bottom:14px;text-align:center;letter-spacing:.5px;}
+.track-steps{display:flex;align-items:flex-start;position:relative;justify-content:space-between;}
+.track-line-bg{position:absolute;top:16px;right:8%;left:8%;height:4px;background:var(--border);border-radius:2px;z-index:0;}
+.track-line-fill{position:absolute;top:16px;right:8%;height:4px;background:linear-gradient(to left,var(--accent2),var(--accent));border-radius:2px;z-index:1;transition:width .7s ease;}
+.track-step{display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;z-index:2;flex:1;}
+.track-dot{width:34px;height:34px;border-radius:50%;background:#e2e8f0;border:3px solid var(--white);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .4s;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+.track-dot.done{background:#1a3a6b;border-color:#bfdbfe;}
+.track-dot.now{background:var(--accent);border-color:#ffd0b5;animation:pring 1.8s infinite;}
+@keyframes pring{0%,100%{box-shadow:0 0 0 0 rgba(230,92,0,.4)}60%{box-shadow:0 0 0 9px rgba(230,92,0,0)}}
+.track-lbl{font-size:.58rem;color:var(--muted);font-weight:700;text-align:center;line-height:1.35;max-width:56px;}
 .track-lbl.now{color:var(--accent);font-weight:900;}
 .track-lbl.done{color:var(--blue);}
 
-/* MAP */
-.map-wrap{border-radius:var(--r);overflow:hidden;border:2px solid var(--border);margin-bottom:14px;}
-#map-client{height:200px;}
-#map-driver{height:300px;}
-#map-admin{height:280px;}
+/* ── MAP ── */
+.map-wrap{border-radius:var(--r);overflow:hidden;border:2px solid var(--border);margin-bottom:12px;}
+#map-client{height:195px;}
+#map-driver{height:295px;}
+#map-admin{height:270px;}
 
-/* FORM */
-.flbl{display:block;font-size:.87rem;font-weight:700;margin-bottom:5px;color:var(--ink);}
-.finp,.fsel,.ftxt{font-family:'Tajawal',sans-serif;width:100%;background:var(--cream);border:2px solid var(--border);border-radius:10px;padding:12px 15px;color:var(--ink);font-size:.94rem;outline:none;transition:border-color .2s;}
+/* ── FORM ── */
+.flbl{display:block;font-size:.85rem;font-weight:700;margin-bottom:4px;color:var(--ink);}
+.finp,.fsel,.ftxt{font-family:'Tajawal',sans-serif;width:100%;background:var(--cream);border:2px solid var(--border);border-radius:10px;padding:11px 14px;color:var(--ink);font-size:.93rem;outline:none;transition:border-color .2s;}
 .finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--blue);}
-.ftxt{resize:vertical;min-height:82px;}
-.fa{display:flex;gap:9px;justify-content:flex-end;margin-top:14px;}
+.ftxt{resize:vertical;min-height:78px;}
+.fa{display:flex;gap:8px;justify-content:flex-end;margin-top:12px;}
 
-/* BUTTONS */
-.btn{font-family:'Tajawal',sans-serif;font-size:.92rem;font-weight:800;padding:11px 21px;border-radius:11px;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px;}
-.btn-red{background:var(--accent);color:#fff;box-shadow:0 4px 13px rgba(230,92,0,.3);}
+/* ── BUTTONS ── */
+.btn{font-family:'Tajawal',sans-serif;font-size:.9rem;font-weight:800;padding:10px 18px;border-radius:10px;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;}
+.btn-red{background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(230,92,0,.28);}
 .btn-red:hover{background:#c44d00;transform:translateY(-1px);}
-.btn-blue{background:var(--blue);color:#fff;box-shadow:0 4px 13px rgba(26,58,107,.25);}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 4px 12px rgba(26,58,107,.22);}
 .btn-blue:hover{background:#0f2550;transform:translateY(-1px);}
-.btn-green{background:var(--green);color:#fff;box-shadow:0 4px 13px rgba(15,124,74,.25);}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 4px 12px rgba(15,124,74,.22);}
 .btn-green:hover{filter:brightness(.92);}
 .btn-ghost{background:var(--cream);border:2px solid var(--border);color:var(--ink);}
+.btn-ghost:hover{background:var(--warm);}
 .btn-danger{background:transparent;border:2px solid var(--accent);color:var(--accent);}
-.btn-accept{background:linear-gradient(135deg,#059669,#0f7c4a);color:#fff;font-size:1.05rem;padding:14px;width:100%;justify-content:center;box-shadow:0 4px 16px rgba(5,150,105,.35);animation:pulse-g 1.5s infinite;}
-@keyframes pulse-g{0%,100%{box-shadow:0 4px 16px rgba(5,150,105,.35)}50%{box-shadow:0 4px 24px rgba(5,150,105,.6)}}
-.btn-sm{padding:7px 13px;font-size:.79rem;}
-.btn:disabled{opacity:.45;cursor:not-allowed;transform:none!important;animation:none!important;}
+.btn-accept{background:linear-gradient(135deg,#059669,#0f7c4a);color:#fff;font-size:1rem;padding:13px;width:100%;justify-content:center;box-shadow:0 4px 15px rgba(5,150,105,.32);animation:pulse-g 1.6s infinite;}
+@keyframes pulse-g{0%,100%{box-shadow:0 4px 15px rgba(5,150,105,.32)}50%{box-shadow:0 4px 22px rgba(5,150,105,.58)}}
+.btn-sm{padding:6px 12px;font-size:.77rem;}
+.btn:disabled{opacity:.42;cursor:not-allowed;transform:none!important;animation:none!important;}
 
-/* BADGES */
-.bdg{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;font-size:.77rem;font-weight:800;white-space:nowrap;border:1.5px solid;}
+/* ── BADGES ── */
+.bdg{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:800;white-space:nowrap;border:1.5px solid;}
 .b-pend{background:#fffbeb;color:#92400e;border-color:#fcd34d;}
 .b-avail{background:#f0fdf4;color:#065f38;border-color:#86efac;}
 .b-disp{background:var(--blue-light);color:var(--blue);border-color:#93c5fd;}
@@ -166,19 +172,19 @@ main{max-width:1080px;margin:0 auto;padding:20px 15px;}
 .b-done{background:var(--green-light);color:var(--green);border-color:#4ade80;}
 .b-rej{background:#fff1f2;color:var(--accent);border-color:#fca5a5;}
 
-/* ORDER CARD */
-.oc{background:var(--cream);border:2px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:10px;transition:all .2s;}
+/* ── ORDER CARDS ── */
+.oc{background:var(--cream);border:2px solid var(--border);border-radius:var(--r);padding:13px 15px;margin-bottom:9px;transition:all .2s;}
 .oc:hover{background:var(--white);border-color:var(--blue2);}
 .oc.hot{border-color:var(--accent2);border-width:2.5px;background:var(--white);}
 .oc.done{border-color:var(--green);}
-.oc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:5px;}
-.oc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
-.of{font-size:.88rem;}
-.of .l{color:var(--muted);display:block;font-size:.7rem;font-weight:700;margin-bottom:1px;}
-.oc-act{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap;}
+.oc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;flex-wrap:wrap;gap:4px;}
+.oc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
+.of{font-size:.86rem;}
+.of .l{color:var(--muted);display:block;font-size:.68rem;font-weight:700;margin-bottom:1px;}
+.oc-act{margin-top:9px;display:flex;gap:6px;flex-wrap:wrap;}
 
-/* NOTE */
-.note{border-radius:10px;padding:11px 14px;margin-top:8px;font-weight:700;font-size:.88rem;border:2px solid;}
+/* ── NOTE ── */
+.note{border-radius:9px;padding:10px 13px;margin-top:7px;font-weight:700;font-size:.86rem;border:2px solid;}
 .n-warn{background:#fffbeb;border-color:#fcd34d;color:#92400e;}
 .n-info{background:var(--blue-light);border-color:#93c5fd;color:#1e3a8a;}
 .n-go{background:var(--green-light);border-color:#4ade80;color:#14532d;}
@@ -186,84 +192,83 @@ main{max-width:1080px;margin:0 auto;padding:20px 15px;}
 .n-err{background:#fff1f2;border-color:#fca5a5;color:var(--accent);}
 .n-hot{background:#fff7ed;border-color:#fdba74;color:#9a3412;}
 
-/* EARNINGS */
-.earn{background:linear-gradient(135deg,var(--blue),#0f2550);border-radius:var(--r-lg);padding:20px 22px;color:#fff;margin-bottom:14px;box-shadow:var(--shadow-lg);}
-.earn h3{font-size:.85rem;opacity:.72;margin-bottom:4px;}
-.earn-n{font-size:2.2rem;font-weight:900;line-height:1;}
-.earn-s{font-size:.76rem;opacity:.65;margin-top:4px;}
+/* ── EARNINGS ── */
+.earn{background:linear-gradient(135deg,var(--blue),#0f2550);border-radius:var(--r-lg);padding:18px 20px;color:#fff;margin-bottom:13px;box-shadow:var(--shadow-lg);}
+.earn h3{font-size:.83rem;opacity:.7;margin-bottom:3px;}
+.earn-n{font-size:2.1rem;font-weight:900;line-height:1;}
+.earn-s{font-size:.74rem;opacity:.62;margin-top:3px;}
 
-/* TIERS */
+/* ── TIERS ── */
 .tiers{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden;}
-.tiers th{background:var(--blue);color:#fff;padding:10px 13px;font-size:.82rem;font-weight:800;text-align:center;}
+.tiers th{background:var(--blue);color:#fff;padding:9px 12px;font-size:.8rem;font-weight:800;text-align:center;}
 .tiers th:first-child{text-align:right;}
-.tiers td{padding:10px 13px;font-size:.88rem;border-bottom:1px solid var(--border);text-align:center;}
+.tiers td{padding:9px 12px;font-size:.87rem;border-bottom:1px solid var(--border);text-align:center;}
 .tiers td:first-child{text-align:right;font-weight:700;}
 .tiers tr:nth-child(even){background:var(--cream);}
 
-/* DRIVER STATUS */
-.driver-status-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);padding:15px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;box-shadow:var(--shadow);}
-.ds-info{display:flex;align-items:center;gap:12px;}
-.ds-dot{width:13px;height:13px;border-radius:50%;background:#22c55e;flex-shrink:0;}
+/* ── DRIVER STATUS ── */
+.driver-status-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);padding:13px 17px;margin-bottom:13px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;box-shadow:var(--shadow);}
+.ds-info{display:flex;align-items:center;gap:11px;}
+.ds-dot{width:12px;height:12px;border-radius:50%;background:#22c55e;flex-shrink:0;}
 .ds-dot.busy{background:var(--accent2);}
-.ds-label{font-size:1rem;font-weight:800;}
-.ds-sub{font-size:.8rem;color:var(--muted);margin-top:2px;}
+.ds-label{font-size:.97rem;font-weight:800;}
+.ds-sub{font-size:.77rem;color:var(--muted);margin-top:1px;}
 
-/* STORE LOC BAR */
-.store-loc-bar{background:var(--blue-light);border:2px solid #bfdbfe;border-radius:var(--r);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
-.slb-info{font-size:.86rem;font-weight:700;color:var(--blue);}
+/* ── STORE LOC BAR ── */
+.store-loc-bar{background:var(--blue-light);border:2px solid #bfdbfe;border-radius:var(--r);padding:11px 15px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px;margin-bottom:13px;}
+.slb-info{font-size:.84rem;font-weight:700;color:var(--blue);}
 .slb-info.done{color:var(--green);}
 
-/* SLOC MODAL */
-.sloc-modal{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:16px;}
-.sloc-card{background:var(--white);border-radius:var(--r-lg);width:100%;max-width:560px;overflow:hidden;box-shadow:var(--shadow-lg);}
-.sloc-head{background:var(--blue);color:#fff;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;}
-.sloc-head h3{font-size:1rem;font-weight:800;}
-.sloc-close{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:6px 12px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:.85rem;font-weight:700;}
-#sloc-map{height:280px;}
-.sloc-info{padding:12px 18px;background:var(--cream);border-top:2px solid var(--border);}
-.sloc-addr{font-size:.86rem;font-weight:700;color:var(--ink);margin-bottom:9px;min-height:20px;}
-.sloc-foot{padding:12px 18px;display:flex;gap:8px;justify-content:flex-end;border-top:1px solid var(--border);}
+/* ── SLOC MODAL ── */
+.sloc-modal{position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,.58);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:14px;}
+.sloc-card{background:var(--white);border-radius:var(--r-lg);width:100%;max-width:550px;overflow:hidden;box-shadow:var(--shadow-lg);}
+.sloc-head{background:var(--blue);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;}
+.sloc-head h3{font-size:.97rem;font-weight:800;}
+.sloc-close{background:rgba(255,255,255,.14);border:none;color:#fff;border-radius:7px;padding:5px 11px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:.83rem;font-weight:700;}
+#sloc-map{height:270px;}
+.sloc-info{padding:11px 17px;background:var(--cream);border-top:2px solid var(--border);}
+.sloc-addr{font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:8px;min-height:19px;}
+.sloc-foot{padding:11px 17px;display:flex;gap:7px;justify-content:flex-end;border-top:1px solid var(--border);}
 
-/* ADMIN MANAGE */
-.manage-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
-.mt{background:var(--cream);border:2px solid var(--border);border-radius:10px;padding:9px 16px;font-family:'Tajawal',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;color:var(--muted);transition:all .2s;}
+/* ── ADMIN ── */
+.manage-tabs{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap;}
+.mt{background:var(--cream);border:2px solid var(--border);border-radius:9px;padding:8px 14px;font-family:'Tajawal',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;color:var(--muted);transition:all .2s;}
 .mt.active{background:var(--blue);border-color:var(--blue);color:#fff;}
 .manage-panel{display:none;}.manage-panel.show{display:block;}
 .tw{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
-thead th{background:var(--cream);padding:10px 12px;text-align:right;font-size:.77rem;font-weight:800;white-space:nowrap;border-bottom:2px solid var(--border);}
+thead th{background:var(--cream);padding:9px 11px;text-align:right;font-size:.75rem;font-weight:800;white-space:nowrap;border-bottom:2px solid var(--border);}
 tbody tr{border-top:1px solid var(--border);}
 tbody tr:hover{background:var(--blue-light);}
-tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
+tbody td{padding:9px 11px;font-size:.83rem;vertical-align:middle;}
 
-/* TOAST & BANNER */
-#toasts{position:fixed;bottom:18px;right:0;left:0;z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;}
-.toast{background:var(--ink);color:#fff;border-radius:11px;padding:12px 19px;font-size:.9rem;font-weight:700;display:flex;align-items:center;gap:8px;animation:tup .3s ease;pointer-events:all;max-width:380px;width:90%;box-shadow:var(--shadow-lg);}
+/* ── TOAST & BANNER ── */
+#toasts{position:fixed;bottom:16px;right:0;left:0;z-index:9999;display:flex;flex-direction:column;gap:7px;align-items:center;pointer-events:none;}
+.toast{background:var(--ink);color:#fff;border-radius:10px;padding:11px 17px;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:7px;animation:tup .3s ease;pointer-events:all;max-width:370px;width:90%;box-shadow:var(--shadow-lg);}
 .t-ok{background:var(--green);}.t-er{background:var(--accent);}.t-in{background:var(--blue);}
-@keyframes tup{from{transform:translateY(14px);opacity:0}to{transform:translateY(0);opacity:1}}
-.notif-banner{position:fixed;top:68px;right:10px;left:10px;z-index:9998;border-radius:var(--r);padding:14px 18px;display:flex;align-items:center;gap:11px;color:#fff;animation:bslide .4s ease;cursor:pointer;box-shadow:var(--shadow-lg);max-width:440px;margin:0 auto;}
-@keyframes bslide{from{transform:translateY(-16px);opacity:0}to{transform:translateY(0);opacity:1}}
-.bn-i{font-size:1.4rem;flex-shrink:0;}
-.bn-t{font-size:.95rem;font-weight:900;}
-.bn-s{font-size:.79rem;opacity:.88;margin-top:2px;}
+@keyframes tup{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.notif-banner{position:fixed;top:66px;right:9px;left:9px;z-index:9998;border-radius:var(--r);padding:13px 16px;display:flex;align-items:center;gap:10px;color:#fff;animation:bslide .4s ease;cursor:pointer;box-shadow:var(--shadow-lg);max-width:430px;margin:0 auto;}
+@keyframes bslide{from{transform:translateY(-14px);opacity:0}to{transform:translateY(0);opacity:1}}
+.bn-i{font-size:1.35rem;flex-shrink:0;}
+.bn-t{font-size:.93rem;font-weight:900;}
+.bn-s{font-size:.77rem;opacity:.86;margin-top:2px;}
 
-::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar{width:4px;height:4px;}
 ::-webkit-scrollbar-track{background:var(--cream);}
 ::-webkit-scrollbar-thumb{background:var(--warm);border-radius:3px;}
 @media(max-width:600px){
   .stats{grid-template-columns:repeat(2,1fr);}
   .oc-grid{grid-template-columns:1fr 1fr;}
   body{font-size:16px;}
-  .hero-t{font-size:1.25rem;}
+  .hero-t{font-size:1.22rem;}
 }
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
+<!-- ══ LOGIN ══ -->
 <div id="login">
-<div class="login-bg">
-<div class="login-wrap">
+<div class="login-bg"><div class="login-wrap">
   <div class="brand">
     <div class="brand-logo">🚴</div>
     <h1>وصّ<em>لني</em></h1>
@@ -273,7 +278,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <div class="main-rc" onclick="pickRole('client')" id="rc-client">
       <div class="main-rc-body">
         <span class="main-rc-icon">👤</span>
-        <div class="main-rc-name">أنا عميل</div>
+        <div class="main-rc-name">دخول العميل</div>
         <div class="main-rc-desc">اطلب توصيل لبيتك</div>
         <span class="main-rc-badge">5 ريال فقط 🛍️</span>
       </div>
@@ -281,8 +286,8 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <div class="main-rc" onclick="pickRole('store')" id="rc-store">
       <div class="main-rc-body">
         <span class="main-rc-icon">🏬</span>
-        <div class="main-rc-name">أنا محل</div>
-        <div class="main-rc-desc">اعتمد الطلبات الواردة</div>
+        <div class="main-rc-name">المحلات التجارية</div>
+        <div class="main-rc-desc">حساب المحلات التجارية</div>
         <span class="main-rc-badge">رمز المحل 🔑</span>
       </div>
     </div>
@@ -298,7 +303,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     </div>
   </div>
   <div class="lbox">
-    <div class="lbox-title" id="ltitle">👆 اختر دورك للمتابعة</div>
+    <div class="lbox-title" id="ltitle">👆 اختر للمتابعة</div>
     <div class="lf hide" id="phone-f">
       <div><div class="lf-lbl">📧 البريد الإلكتروني</div><input type="email" id="l-email" class="lf-inp" placeholder="example@email.com" dir="ltr"></div>
       <div><div class="lf-lbl">📱 رقم جوالك</div><input type="tel" id="l-phone" class="lf-inp" placeholder="05xxxxxxxx" dir="ltr"></div>
@@ -314,7 +319,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   <div class="l-hint">رمز الدخول سري — تواصل مع الإدارة للحصول عليه</div>
 </div></div></div>
 
-<!-- APP -->
+<!-- ══ APP ══ -->
 <div id="app">
 <div class="nav">
   <div class="nav-brand"><div class="nav-ico">🚴</div>وصّلني</div>
@@ -322,38 +327,39 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <span class="dot" id="sdot"></span>
     <span class="rpill" id="rpill"></span>
     <button class="nb" id="sndbtn" onclick="toggleSound()" style="display:none">🔔</button>
-    <button class="nb" id="setup-btn" onclick="openSlocFromStore()" style="display:none">📍</button>
-    <button class="nb" id="admin-setup-btn" onclick="showAdminSetup()" style="display:none">⚙️</button>
+    <button class="nb" id="store-loc-btn" onclick="openSlocFromStore()" style="display:none">📍 موقعي</button>
+    <button class="nb" id="admin-btn" onclick="goAdminStores()" style="display:none">⚙️ إعدادات</button>
     <button class="nb" onclick="logout()">خروج</button>
   </div>
 </div>
 <main>
 
-<!-- CLIENT PAGE -->
+<!-- CLIENT -->
 <div id="pg-client" class="page">
   <div class="hero h-blue">
     <div class="hero-c">
       <div class="hero-eye">حي مشرف — الخرج</div>
       <div class="hero-t">اطلب من محلاتك 🛍️</div>
-      <div class="hero-s">توصيل سريع لبابك</div>
+      <div class="hero-s">توصيل سريع لبابك — 5 ريال فقط</div>
       <div class="hero-pill" id="client-pill">👤 —</div>
     </div>
   </div>
   <div class="sec">
     <div class="sec-h"><h2>🛒 طلب جديد</h2></div>
     <div class="sec-b">
-      <label class="flbl" style="margin-bottom:10px">اختر المحل *</label>
+      <label class="flbl" style="margin-bottom:9px">اختر المحل *</label>
       <div class="spick" id="spick"></div>
-      <div style="margin-bottom:14px">
+      <div style="margin-bottom:12px">
         <label class="flbl">📍 موقعك — يتحدد تلقائياً</label>
         <div class="map-wrap"><div id="map-client"></div></div>
-        <div id="map-client-status" style="font-size:.78rem;color:var(--muted);margin-top:5px">⏳ جاري تحديد موقعك...</div>
+        <div id="map-client-status" style="font-size:.77rem;color:var(--muted);margin-top:4px">⏳ جاري تحديد موقعك...</div>
       </div>
-      <div style="margin-bottom:12px">
+      <div style="margin-bottom:11px">
         <label class="flbl">وصف إضافي (اختياري)</label>
         <input id="cadr" class="finp" placeholder="رقم البيت، علامة مميزة...">
       </div>
-      <div><label class="flbl">تفاصيل الطلب *</label>
+      <div>
+        <label class="flbl">تفاصيل الطلب *</label>
         <textarea id="cdet" class="ftxt" placeholder="اكتب ما تريد طلبه..." oninput="buildStorePicker()"></textarea>
       </div>
       <div class="fa"><button class="btn btn-red" id="subbtn" onclick="submitOrder()">✅ أرسل الطلب</button></div>
@@ -362,7 +368,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   <div class="sec">
     <div class="sec-h" onclick="toggleOrders()" style="cursor:pointer;user-select:none">
       <h2>🗂️ طلباتي السابقة <span id="orders-arrow">▼</span></h2>
-      <span id="cstats" style="font-size:.77rem;color:var(--muted)"></span>
+      <span id="cstats" style="font-size:.75rem;color:var(--muted)"></span>
     </div>
     <div id="orders-collapse" style="display:none">
       <div class="sec-b"><div id="clist"></div></div>
@@ -370,12 +376,12 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   </div>
 </div>
 
-<!-- STORE PAGE -->
+<!-- STORE -->
 <div id="pg-store" class="page">
   <div class="hero h-fire">
     <div class="hero-c">
-      <div class="hero-eye">لوحة المحل</div>
-      <div class="hero-t" id="store-ht">🏬 اعتمد الطلبات</div>
+      <div class="hero-eye">حساب المحلات التجارية</div>
+      <div class="hero-t" id="store-ht">🏬 الطلبات الواردة</div>
       <div class="hero-s">التوزيع تلقائي — أول موصل يقبل يأخذ الطلب</div>
       <div class="hero-pill">✅ اعتمد ← 🚴 يذهب فوراً</div>
     </div>
@@ -392,7 +398,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   </div>
   <div class="sec">
     <div class="sec-h"><h2>📩 الطلبات الواردة</h2>
-      <div style="display:flex;gap:7px">
+      <div style="display:flex;gap:6px">
         <select id="sflt" class="finp btn-sm" style="width:auto" onchange="renderStore()">
           <option value="">الكل</option>
           <option value="pending">معلقة</option><option value="available">معروضة</option>
@@ -406,7 +412,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   </div>
 </div>
 
-<!-- DRIVER PAGE -->
+<!-- DRIVER -->
 <div id="pg-driver" class="page">
   <div class="hero h-forest">
     <div class="hero-c">
@@ -423,7 +429,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     </div>
     <button class="btn btn-ghost btn-sm" onclick="updateDriverLocation()">📍 تحديث موقعي</button>
   </div>
-  <div class="sec" style="margin-bottom:14px">
+  <div class="sec" style="margin-bottom:13px">
     <div class="sec-h"><h2>🗺️ خريطة التوصيل</h2></div>
     <div class="map-wrap" style="margin-bottom:0"><div id="map-driver"></div></div>
   </div>
@@ -438,17 +444,17 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <div class="earn-n" id="damt">0.00 ريال</div>
     <div class="earn-s" id="dsub">—</div>
   </div>
-  <div class="sec" style="margin-bottom:14px">
+  <div class="sec" style="margin-bottom:13px">
     <div class="sec-h"><h2>📊 جدول الحوافز</h2></div>
-    <div class="sec-b" style="padding:14px">
+    <div class="sec-b" style="padding:12px">
       <table class="tiers">
         <thead><tr><th>الشريحة</th><th>للموصل/طلب</th><th>للإدارة/طلب</th></tr></thead>
         <tbody>
-          <tr><td>1 → 10</td><td style="color:var(--muted)">0 ريال</td><td style="color:var(--green);font-weight:800">7 ريال</td></tr>
-          <tr><td>11 → 20</td><td style="color:var(--blue);font-weight:800">2.5 ريال</td><td style="color:var(--green);font-weight:800">4.5 ريال</td></tr>
-          <tr><td>21 → 25</td><td style="color:var(--blue);font-weight:800">4.5 ريال</td><td style="color:var(--green);font-weight:800">2.5 ريال</td></tr>
-          <tr><td>26 → 30</td><td style="color:var(--accent2);font-weight:800">5 ريال</td><td style="color:var(--green);font-weight:800">2 ريال</td></tr>
-          <tr><td>31+ 🏆</td><td style="color:var(--green);font-weight:900">7 ريال</td><td style="color:var(--muted)">0 ريال</td></tr>
+          <tr><td>1→10</td><td style="color:var(--muted)">0 ر</td><td style="color:var(--green);font-weight:800">7 ر</td></tr>
+          <tr><td>11→20</td><td style="color:var(--blue);font-weight:800">2.5 ر</td><td style="color:var(--green);font-weight:800">4.5 ر</td></tr>
+          <tr><td>21→25</td><td style="color:var(--blue);font-weight:800">4.5 ر</td><td style="color:var(--green);font-weight:800">2.5 ر</td></tr>
+          <tr><td>26→30</td><td style="color:var(--accent2);font-weight:800">5 ر</td><td style="color:var(--green);font-weight:800">2 ر</td></tr>
+          <tr><td>31+ 🏆</td><td style="color:var(--green);font-weight:900">7 ر</td><td style="color:var(--muted)">0 ر</td></tr>
         </tbody>
       </table>
     </div>
@@ -459,7 +465,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   </div>
 </div>
 
-<!-- ADMIN PAGE -->
+<!-- ADMIN -->
 <div id="pg-admin" class="page">
   <div class="hero h-night">
     <div class="hero-c">
@@ -475,11 +481,11 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <div class="stat"><div class="stat-n" id="as3" style="color:var(--accent2)">0</div><div class="stat-l">🚴 نشطة</div></div>
     <div class="stat"><div class="stat-n" id="as4" style="color:var(--green)">0</div><div class="stat-l">✅ مكتملة</div></div>
   </div>
-  <div class="sec" style="margin-bottom:16px">
+  <div class="sec" style="margin-bottom:14px">
     <div class="sec-h"><h2>🗺️ خريطة المناديب</h2><button class="btn btn-ghost btn-sm" onclick="refreshAdminMap()">🔄</button></div>
     <div class="map-wrap" style="margin-bottom:0"><div id="map-admin"></div></div>
   </div>
-  <div class="earn" style="background:linear-gradient(135deg,#1e1b4b,#3730a3)">
+  <div class="earn" style="background:linear-gradient(135deg,#1a1740,#3730a3)">
     <h3>💼 أرباح الإدارة</h3>
     <div class="earn-n" id="aamt">0.00 ريال</div>
     <div class="earn-s" id="asub">—</div>
@@ -488,13 +494,13 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <div class="sec-h"><h2>⚙️ الإدارة المتقدمة</h2></div>
     <div class="sec-b">
       <div class="manage-tabs">
-        <button class="mt active" onclick="mgTab('orders')">📋 الطلبات</button>
-        <button class="mt" onclick="mgTab('drivers')">🚴 الموصلين</button>
-        <button class="mt" onclick="mgTab('stores')">🏬 المحلات</button>
+        <button class="mt active" onclick="mgTab(event,'orders')">📋 الطلبات</button>
+        <button class="mt" onclick="mgTab(event,'drivers')">🚴 الموصلين</button>
+        <button class="mt" onclick="mgTab(event,'stores')">🏬 المحلات</button>
       </div>
       <div class="manage-panel show" id="mp-orders">
-        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px">
-          <input id="asrch" type="text" placeholder="🔍 بحث..." oninput="renderAdmin()" class="finp btn-sm" style="flex:1;min-width:150px">
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:11px">
+          <input id="asrch" type="text" placeholder="🔍 بحث..." oninput="renderAdmin()" class="finp btn-sm" style="flex:1;min-width:140px">
           <select id="aflt" onchange="renderAdmin()" class="finp btn-sm" style="width:auto">
             <option value="">كل الحالات</option>
             <option value="pending">معلقة</option><option value="available">معروضة</option>
@@ -520,12 +526,11 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
   </div>
   <div class="sec">
     <div class="sec-h"><h2>🔔 آخر التوزيعات</h2><button class="btn btn-ghost btn-sm" onclick="fetchAndRender()">🔄</button></div>
-    <div class="sec-b"><div id="anotif"><div style="text-align:center;color:var(--muted);padding:14px">لا توجد توزيعات بعد</div></div></div>
+    <div class="sec-b"><div id="anotif"><div style="text-align:center;color:var(--muted);padding:13px">لا توجد توزيعات بعد</div></div></div>
   </div>
 </div>
 
-</main>
-</div>
+</main></div>
 
 <!-- SLOC MODAL -->
 <div class="sloc-modal" id="sloc-modal" style="display:none">
@@ -537,7 +542,7 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     <div id="sloc-map"></div>
     <div class="sloc-info">
       <div class="sloc-addr" id="sloc-addr">🔴 انقر على الخريطة أو اضغط GPS</div>
-      <div style="display:flex;gap:8px">
+      <div style="display:flex;gap:7px">
         <button class="btn btn-blue btn-sm" onclick="slocGPS()">📡 GPS</button>
         <button class="btn btn-ghost btn-sm" id="sloc-clear" onclick="slocClear()" style="display:none">🗑️ مسح</button>
       </div>
@@ -548,12 +553,11 @@ tbody td{padding:10px 12px;font-size:.84rem;vertical-align:middle;}
     </div>
   </div>
 </div>
-
 <div id="toasts"></div>
 
 <script>
 // ══════════════════════════════════════════════
-// CONFIG
+// CONFIG — المحلات ثابتة في الكود فقط، لا تأتي من Supabase
 // ══════════════════════════════════════════════
 const ADMIN_PIN='444444';
 const DRV_PINS={'333333':'سبايدر مان','334444':'باتمان','335555':'سوبر مان','336666':'طرزان'};
@@ -566,55 +570,35 @@ const ST={
   rejected: {l:'❌ مرفوض',     c:'b-rej'},
 };
 
-let SB_URL='https://kypngjpyjvzssutvlyih.supabase.co';
-let SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5cG5nanB5anZ6c3N1dHZseWloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyODA3MjMsImV4cCI6MjA5MDg1NjcyM30.JqvaS4HhlEghcKOlvIwovhNfdZK8H3lKrHLYThnMOgA';
-let DB_TYPE='supabase';
-let role=null,drName=null,stName=null,stPin=null,cPhone=null,cName=null;
+// ★ المحلات ثابتة — لا يتم جلبها من Supabase أبداً
+const STORES=[
+  {name:'الصالحية',        icon:'🛒',pin:'200100',phone:'0540298934',desc:'بقالة الصالحية',       lat:24.1520,lng:47.3250},
+  {name:'مطعم مندي الخرج', icon:'🍖',pin:'200200',phone:'0557552620',desc:'مندي وكبسة',           lat:24.1525,lng:47.3255},
+  {name:'بروستد برونتو',   icon:'🍗',pin:'200300',phone:'0537465464',desc:'بروستد وشاورما',       lat:24.1515,lng:47.3245},
+  {name:'كوفي دانه',       icon:'☕',pin:'200400',phone:'0534891295',desc:'مشروبات ساخنة وباردة', lat:24.1530,lng:47.3260},
+  {name:'لقيمات سنابل',    icon:'🍩',pin:'200500',phone:'0507816577',desc:'لقيمات طازجة',         lat:24.1510,lng:47.3240},
+  {name:'مطبق المحترف',    icon:'🥟',pin:'200600',phone:'0509176820',desc:'مطبق وسمبوسة',         lat:24.1535,lng:47.3265},
+  {name:'عصرة عنب',        icon:'🍇',pin:'200700',phone:'0508886966',desc:'عصائر طازجة',          lat:24.1505,lng:47.3235},
+];
+
+const SB_URL='https://kypngjpyjvzssutvlyih.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5cG5nanB5anZ6c3N1dHZseWloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyODA3MjMsImV4cCI6MjA5MDg1NjcyM30.JqvaS4HhlEghcKOlvIwovhNfdZK8H3lKrHLYThnMOgA';
+const DEFAULT_LAT=24.1520,DEFAULT_LNG=47.3250;
+
+let role=null,drName=null,stName=null,cPhone=null,cName=null,pRole=null;
 let selStore=null,clientLat=null,clientLng=null,clientStreet='';
-let orders=[],stores=[],drivers=[];
+let orders=[],drivers=[];
 let seen=new Set(),sndOn=false,ctx=null,timer=null;
 let mapClient=null,mapDriver=null,mapAdmin=null;
 let drMarker=null,clientMarker=null,adminMarkers=[];
-let driverLat=null,driverLng=null,pRole=null;
-
-// المحلات الثابتة
-const STORES_LOCAL=[
-  {name:'الصالحية',        icon:'🛒',pin:'200100',lat:24.1520,lng:47.3250,phone:'0540298934',desc:'بقالة الصالحية'},
-  {name:'مطعم مندي الخرج', icon:'🍖',pin:'200200',lat:24.1525,lng:47.3255,phone:'0557552620',desc:'مندي وكبسة'},
-  {name:'بروستد برونتو',   icon:'🍗',pin:'200300',lat:24.1515,lng:47.3245,phone:'0537465464',desc:'بروستد وشاورما'},
-  {name:'كوفي دانه',       icon:'☕',pin:'200400',lat:24.1530,lng:47.3260,phone:'0534891295',desc:'مشروبات ساخنة وباردة'},
-  {name:'لقيمات سنابل',    icon:'🍩',pin:'200500',lat:24.1510,lng:47.3240,phone:'0507816577',desc:'لقيمات طازجة'},
-  {name:'مطبق المحترف',    icon:'🥟',pin:'200600',lat:24.1535,lng:47.3265,phone:'0509176820',desc:'مطبق وسمبوسة'},
-  {name:'عصرة عنب',        icon:'🍇',pin:'200700',lat:24.1505,lng:47.3235,phone:'0508886966',desc:'عصائر طازجة'},
-];
-const DEFAULT_LAT=24.1520,DEFAULT_LNG=47.3250;
+let driverLat=null,driverLng=null;
 
 // ══════════════════════════════════════════════
-// EARNINGS
+// SUPABASE API — للطلبات والموصلين فقط
 // ══════════════════════════════════════════════
-function calcDrv(n){
-  let d=0;
-  for(let i=1;i<=n;i++){
-    if(i<=10)d+=0; else if(i<=20)d+=2.5; else if(i<=25)d+=4.5;
-    else if(i<=30)d+=5; else d+=7;
-  }
-  return{drv:d,adm:(n*7)-d};
-}
-function calcAll(done){
-  let at=0;const r={};
-  Object.values(DRV_PINS).forEach(n=>{
-    const c=done.filter(o=>o.driver===n).length;
-    const e=calcDrv(c);r[n]={c,drv:e.drv,adm:e.adm};at+=e.adm;
-  });
-  r._a=at;return r;
-}
-
-// ══════════════════════════════════════════════
-// API — Supabase
-// ══════════════════════════════════════════════
-async function sbFetch(table,params=''){
-  const r=await fetch(SB_URL+'/rest/v1/'+table+params,{
-    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json'}
+async function sbFetch(table,params){
+  const r=await fetch(SB_URL+'/rest/v1/'+table+(params||''),{
+    headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=representation'}
   });return r.json();
 }
 async function sbPost(table,data){
@@ -630,82 +614,29 @@ async function sbPatch(table,filter,data){
   });return r.json();
 }
 
-async function fetchOrders(){
-  setSt('loading');
-  try{
-    const data=await sbFetch('orders','?select=*&order=id.desc');
-    if(Array.isArray(data)) orders=data.map(normalizeOrder);
-    else throw 0;
-    checkNotifs(orders);setSt('ok');
-  }catch(e){setSt('error');}
+// ══════════════════════════════════════════════
+// EARNINGS
+// ══════════════════════════════════════════════
+function calcDrv(n){
+  let d=0;
+  for(let i=1;i<=n;i++){if(i<=10)d+=0;else if(i<=20)d+=2.5;else if(i<=25)d+=4.5;else if(i<=30)d+=5;else d+=7;}
+  return{drv:d,adm:(n*7)-d};
 }
-async function fetchStores(){
-  try{
-    const data=await sbFetch('stores','?select=*&order=id');
-    if(Array.isArray(data)&&data.length) stores=data;
-    else stores=[];
-  }catch(e){stores=[];}
-}
-async function fetchDrivers(){
-  try{
-    const data=await sbFetch('drivers','?select=*');
-    if(Array.isArray(data)) drivers=data;
-  }catch(e){}
-}
-
-function normalizeOrder(o){
-  return{
-    id:o.id,name:o.client_name,phone:o.client_phone,
-    store:o.store_name,street:o.street,details:o.details,
-    status:o.status,driver:o.driver_name||'',
-    time:o.created_at?o.created_at.substring(0,16).replace('T',' '):'',
-    pickedTime:o.picked_at?o.picked_at.substring(11,16):'',
-    deliveredTime:o.delivered_at?o.delivered_at.substring(11,16):'',
-    lat:o.client_lat||'',lng:o.client_lng||''
-  };
-}
-
-async function addOrder(data){
-  const store=(stores.length?stores:STORES_LOCAL).find(s=>s.name===selStore);
-  return sbPost('orders',{
-    client_name:data.name,client_phone:data.phone,
-    store_id:store?.id,store_name:data.store,
-    street:data.street,details:data.details,
-    client_lat:data.lat||null,client_lng:data.lng||null,
-    status:'pending'
-  });
-}
-async function updateStatus(id,status,extra={}){
-  const now=new Date().toISOString();
-  const patch={status,...extra};
-  if(status==='picked') patch.picked_at=now;
-  if(status==='delivered') patch.delivered_at=now;
-  return sbPatch('orders','id=eq.'+id,patch);
-}
-async function acceptOrderDB(id){
-  const data=await sbFetch('orders','?id=eq.'+id+'&select=status');
-  if(!data[0]||data[0].status!=='available') return{success:false,taken:true};
-  const driver=drivers.find(d=>d.name===drName);
-  const r=await sbPatch('orders','id=eq.'+id+'&status=eq.available',{
-    status:'dispatched',driver_id:driver?.id,driver_name:drName
-  });
-  if(Array.isArray(r)&&r.length>0) return{success:true};
-  return{success:false,taken:true};
-}
-async function updateDriverPos(lat,lng){
-  const d=drivers.find(x=>x.name===drName);
-  if(d) await sbPatch('drivers','id=eq.'+d.id,{lat,lng,updated_at:new Date().toISOString()});
+function calcAll(done){
+  let at=0;const r={};
+  Object.values(DRV_PINS).forEach(n=>{const c=done.filter(o=>o.driver===n).length;const e=calcDrv(c);r[n]={c,drv:e.drv,adm:e.adm};at+=e.adm;});
+  r._a=at;return r;
 }
 
 // ══════════════════════════════════════════════
-// INIT & LOGIN
+// INIT
 // ══════════════════════════════════════════════
 window.onload=()=>{
   loadSavedStoreLocs();
   cPhone=localStorage.getItem('w_phone')||null;
   cName=localStorage.getItem('w_cname')||null;
   document.getElementById('login').style.display='block';
-  if(cPhone&&cName) autoClient();
+  if(cPhone&&cName){role='client';buildStorePicker();enterApp();}
   else buildStorePicker();
 };
 
@@ -716,17 +647,14 @@ function pickRole(r){
   const isC=r==='client';
   document.getElementById('phone-f').className='lf'+(isC?'':' hide');
   document.getElementById('pin-w').className='pin-w'+(isC?'':' show');
-  const t={client:'👤 أدخل بياناتك',store:'🏬 دخول المحل',driver:'🚴 دخول الموصل',admin:'⚙️ دخول الإدارة'};
-  document.getElementById('ltitle').textContent=t[r]||'🔐 اختر دورك';
+  const t={client:'👤 دخول العميل',store:'🏬 حساب المحلات التجارية',driver:'🚴 دخول الموصل',admin:'⚙️ دخول الإدارة'};
+  document.getElementById('ltitle').textContent=t[r];
   if(isC){
     const em=localStorage.getItem('w_email')||'';
-    if(em) document.getElementById('l-email').value=em;
-    if(cPhone) document.getElementById('l-phone').value=cPhone;
-    if(cName) document.getElementById('l-name').value=cName;
-  } else {
-    document.getElementById('pin-in').value='';
-    document.getElementById('pin-in').focus();
-  }
+    if(em)document.getElementById('l-email').value=em;
+    if(cPhone)document.getElementById('l-phone').value=cPhone;
+    if(cName)document.getElementById('l-name').value=cName;
+  }else{document.getElementById('pin-in').value='';document.getElementById('pin-in').focus();}
 }
 
 function doLogin(){
@@ -741,28 +669,20 @@ function doLogin(){
     if(!nm){er.textContent='⚠️ أدخل اسمك';er.style.display='block';return;}
     role='client';cPhone=ph;cName=nm;
     localStorage.setItem('w_phone',ph);localStorage.setItem('w_cname',nm);localStorage.setItem('w_email',em);
-  } else {
+  }else{
     const pin=document.getElementById('pin-in').value.trim();
     if(pRole==='store'){
-      const s=STORES_LOCAL.find(x=>x.pin===pin)||(stores.find(x=>x.pin===pin));
+      const s=STORES.find(x=>x.pin===pin);
       if(!s){er.textContent='❌ رمز غير صحيح';er.style.display='block';return;}
-      role='store';stName=s.name;stPin=pin;
-    } else if(pRole==='driver'){
+      role='store';stName=s.name;
+    }else if(pRole==='driver'){
       if(!DRV_PINS[pin]){er.textContent='❌ رمز غير صحيح';er.style.display='block';return;}
       role='driver';drName=DRV_PINS[pin];
-    } else if(pRole==='admin'){
+    }else if(pRole==='admin'){
       if(pin!==ADMIN_PIN){er.textContent='❌ رمز غير صحيح';er.style.display='block';return;}
       role='admin';
-    } else {er.textContent='❌ رمز غير صحيح';er.style.display='block';return;}
+    }
   }
-  enterApp();
-}
-
-function autoClient(){
-  role='client';
-  cPhone=localStorage.getItem('w_phone')||cPhone;
-  cName=localStorage.getItem('w_cname')||cName;
-  buildStorePicker();
   enterApp();
 }
 
@@ -771,29 +691,23 @@ function enterApp(){
   document.getElementById('app').style.display='block';
   const lbl={client:'👤 '+(cName||'عميل'),store:'🏬 '+stName,driver:'🚴 '+drName,admin:'🎯 إدارة'};
   const cls={client:'rp-c',store:'rp-s',driver:'rp-d',admin:'rp-a'};
-  const p=document.getElementById('rpill');
-  p.textContent=lbl[role];p.className='rpill '+cls[role];
-  if(role==='client'){document.getElementById('client-pill').textContent='👤 '+(cName||'')+' | '+(cPhone||'');}
+  const p=document.getElementById('rpill');p.textContent=lbl[role];p.className='rpill '+cls[role];
+  if(role==='client') document.getElementById('client-pill').textContent='👤 '+(cName||'')+' | '+(cPhone||'');
   if(role==='store') document.getElementById('store-ht').textContent='🏬 '+stName;
   if(role==='driver'){document.getElementById('driver-ht').textContent='🚴 مرحباً '+drName;document.getElementById('dtitle').textContent='📦 طلباتي — '+drName;}
   showPage('pg-'+role);
-  // إخفاء/إظهار الأزرار
-  document.getElementById('setup-btn').style.display=(role==='store')?'':'none';
-  document.getElementById('admin-setup-btn').style.display=(role==='admin')?'':'none';
+  document.getElementById('store-loc-btn').style.display=role==='store'?'':'none';
+  document.getElementById('admin-btn').style.display=role==='admin'?'':'none';
   document.getElementById('sndbtn').style.display=(role==='driver'||role==='store')?'':'none';
   try{if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();sndOn=true;document.getElementById('sndbtn').textContent='🔔';}catch(e){}
   loadSavedStoreLocs();
   fetchAll();
-  const interval=role==='driver'?5000:8000;
-  timer=setInterval(fetchAll,interval);
+  timer=setInterval(fetchAll,role==='driver'?5000:8000);
   setTimeout(()=>{
     if(role==='client'){
       if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(pos=>{
-          window._pendingGPS={lat:pos.coords.latitude,lng:pos.coords.longitude};
-          initClientMap();
-        },()=>initClientMap(),{enableHighAccuracy:true,timeout:12000});
-      } else initClientMap();
+        navigator.geolocation.getCurrentPosition(pos=>{window._gps={lat:pos.coords.latitude,lng:pos.coords.longitude};initClientMap();},()=>initClientMap(),{enableHighAccuracy:true,timeout:12000});
+      }else initClientMap();
     }
     if(role==='driver') initDriverMap();
     if(role==='admin') initAdminMap();
@@ -803,8 +717,7 @@ function enterApp(){
 }
 
 function logout(){
-  role=null;pRole=null;drName=null;stName=null;
-  clearInterval(timer);
+  role=null;pRole=null;drName=null;stName=null;clearInterval(timer);
   document.getElementById('app').style.display='none';
   document.getElementById('login').style.display='block';
   document.getElementById('pin-in').value='';
@@ -813,222 +726,184 @@ function logout(){
   document.getElementById('pin-w').className='pin-w';
 }
 function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id)?.classList.add('active');}
+function mgTab(ev,t){document.querySelectorAll('.mt').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.manage-panel').forEach(p=>p.classList.remove('show'));ev.target.classList.add('active');document.getElementById('mp-'+t)?.classList.add('show');}
+function goAdminStores(){showPage('pg-admin');document.querySelectorAll('.mt').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.manage-panel').forEach(p=>p.classList.remove('show'));document.querySelectorAll('.mt')[2]?.classList.add('active');document.getElementById('mp-stores')?.classList.add('show');}
 
 // ══════════════════════════════════════════════
-// FETCH
+// FETCH — الطلبات والموصلين فقط من Supabase
 // ══════════════════════════════════════════════
 async function fetchAll(){
-  await Promise.all([fetchOrders(),fetchStores(),fetchDrivers()]);
-  loadSavedStoreLocs();
+  setSt('loading');
+  try{
+    const[od,dd]=await Promise.all([sbFetch('orders','?select=*&order=id.desc'),sbFetch('drivers','?select=*')]);
+    if(Array.isArray(od)) orders=od.map(o=>({id:o.id,name:o.client_name,phone:o.client_phone,store:o.store_name,street:o.street,details:o.details,status:o.status,driver:o.driver_name||'',time:o.created_at?o.created_at.substring(0,16).replace('T',' '):'',pickedTime:o.picked_at?o.picked_at.substring(11,16):'',deliveredTime:o.delivered_at?o.delivered_at.substring(11,16):'',lat:o.client_lat||'',lng:o.client_lng||''}));
+    if(Array.isArray(dd)) drivers=dd;
+    checkNotifs(orders);setSt('ok');
+  }catch(e){setSt('error');}
   renderPage();
   if(role==='admin') refreshAdminMap();
 }
 async function fetchAndRender(){await fetchAll();}
-function renderPage(){
-  if(role==='client') renderClient();
-  if(role==='store')  renderStore();
-  if(role==='driver') renderDriver();
-  if(role==='admin')  renderAdmin();
-}
+function renderPage(){if(role==='client')renderClient();if(role==='store')renderStore();if(role==='driver')renderDriver();if(role==='admin')renderAdmin();}
 function setSt(s){const d=document.getElementById('sdot');d.className='dot'+(s==='loading'?' loading':s==='error'?' error':'');}
-function mgTab(t){
-  document.querySelectorAll('.mt').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.manage-panel').forEach(p=>p.classList.remove('show'));
-  event.target.classList.add('active');
-  document.getElementById('mp-'+t).classList.add('show');
-}
 
 // ══════════════════════════════════════════════
 // STORE PICKER + FAVOURITES
 // ══════════════════════════════════════════════
-function getStoreUsage(){return JSON.parse(localStorage.getItem('w_store_usage')||'{}');}
-function recordStoreUsage(name){const u=getStoreUsage();u[name]=(u[name]||0)+1;localStorage.setItem('w_store_usage',JSON.stringify(u));}
+function getUsage(){return JSON.parse(localStorage.getItem('w_usage')||'{}');}
+function recUsage(n){const u=getUsage();u[n]=(u[n]||0)+1;localStorage.setItem('w_usage',JSON.stringify(u));}
 
-function buildStoreWaMsg(storeName){
+function buildStoreWaMsg(){
   const det=(document.getElementById('cdet')?.value||'').trim();
   const addr=(document.getElementById('cadr')?.value||'').trim();
   let msg='مرحباً 👋\nأنا عميل لدى تطبيق *وصّلني* 🚴\n━━━━━━━━━━━━\n📋 *تفاصيل الطلب*\n\n';
-  if(det){const items=det.split(/\n|،|,/).map(x=>x.trim()).filter(x=>x);items.forEach((it,i)=>{msg+=(i+1)+'. '+it+'\n';});}
-  else msg+='(الطلب غير محدد بعد)\n';
-  msg+='\n━━━━━━━━━━━━\n';
-  msg+='👤 الاسم: '+(cName||'—')+'\n📱 الجوال: '+(cPhone||'—')+'\n';
-  if(addr) msg+='📍 ملاحظة: '+addr+'\n';
+  if(det){det.split(/\n|،|,/).map(x=>x.trim()).filter(x=>x).forEach((it,i)=>{msg+=(i+1)+'. '+it+'\n';});}
+  else msg+='(يرجى الانتظار)\n';
+  msg+='\n━━━━━━━━━━━━\n👤 '+( cName||'—')+'\n📱 '+(cPhone||'—')+'\n';
+  if(addr) msg+='📍 '+addr+'\n';
   msg+='\n⚠️ إذا كان أي صنف غير متوفر يرجى التواصل عبر الواتساب.\nشكراً 🙏';
   return encodeURIComponent(msg);
 }
 
 function buildStorePicker(){
-  const list=stores.length?stores:STORES_LOCAL;
-  const usage=getStoreUsage();
-  const sorted=[...list].sort((a,b)=>(usage[b.name]||0)-(usage[a.name]||0));
+  const usage=getUsage();
+  const sorted=[...STORES].sort((a,b)=>(usage[b.name]||0)-(usage[a.name]||0));
   const favs=sorted.filter(s=>(usage[s.name]||0)>0);
   const rest=sorted.filter(s=>(usage[s.name]||0)===0);
   const showAll=document.getElementById('spick-show-all')?.dataset.open==='1';
+  const waMsg=buildStoreWaMsg();
 
-  const renderRow=(s,isFav)=>{
-    const waMsg=buildStoreWaMsg(s.name);
-    return '<div class="store-row '+(selStore===s.name?'sel':'')+'" onclick="pickSt(\''+s.name.replace(/'/g,"\\'")+'\')">'
-      +'<div style="font-size:1.9rem;flex-shrink:0">'+s.icon+'</div>'
-      +'<div style="flex:1;min-width:0">'
-      +'<div style="display:flex;align-items:center;gap:6px">'
-      +'<span style="font-size:.98rem;font-weight:800">'+s.name+'</span>'
-      +(isFav?'<span style="background:#fff3e0;color:#e65c00;font-size:.6rem;font-weight:800;padding:2px 7px;border-radius:20px;border:1px solid #ffcc80">⭐ مفضل</span>':'')
-      +'</div>'
-      +'<div style="font-size:.74rem;color:var(--muted);margin-top:1px">'+s.desc+'</div>'
-      +'<div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap" onclick="event.stopPropagation()">'
-      +(s.phone?'<a href="tel:'+s.phone+'" style="background:#1a3a6b;color:#fff;border-radius:7px;padding:5px 10px;font-size:.75rem;font-weight:800;text-decoration:none">📞 اتصال</a>':'')
-      +(s.phone?'<a href="https://wa.me/966'+s.phone.substring(1)+'?text='+waMsg+'" target="_blank" style="background:#25D366;color:#fff;border-radius:7px;padding:5px 10px;font-size:.75rem;font-weight:800;text-decoration:none">💬 واتساب</a>':'')
-      +'</div></div>'
-      +'<div style="color:'+(selStore===s.name?'#e65c00':'var(--border)')+';font-size:1.2rem;flex-shrink:0">✓</div>'
-      +'</div>';
-  };
+  const row=(s,fav)=>'<div class="store-row'+(selStore===s.name?' sel':'')+'" onclick="pickSt(\''+s.name.replace(/'/g,"\\'")+'\')"><div style="font-size:1.85rem;flex-shrink:0">'+s.icon+'</div><div style="flex:1;min-width:0"><div style="display:flex;align-items:center;gap:5px"><span style="font-size:.96rem;font-weight:800">'+s.name+'</span>'+(fav?'<span style="background:#fff3e0;color:#e65c00;font-size:.58rem;font-weight:800;padding:2px 7px;border-radius:20px;border:1px solid #ffcc80">⭐ مفضل</span>':'')+'</div><div style="font-size:.73rem;color:var(--muted);margin-top:1px">'+s.desc+'</div><div style="display:flex;gap:5px;margin-top:5px;flex-wrap:wrap" onclick="event.stopPropagation()">'+( s.phone?'<a href="tel:'+s.phone+'" style="background:#1a3a6b;color:#fff;border-radius:6px;padding:4px 10px;font-size:.73rem;font-weight:800;text-decoration:none">📞</a>':'')+(s.phone?'<a href="https://wa.me/966'+s.phone.substring(1)+'?text='+waMsg+'" target="_blank" style="background:#25D366;color:#fff;border-radius:6px;padding:4px 10px;font-size:.73rem;font-weight:800;text-decoration:none">💬</a>':'')+'</div></div><div style="color:'+(selStore===s.name?'#e65c00':'var(--border)')+';font-size:1.15rem;flex-shrink:0">✓</div></div>';
 
-  let html='';
-  if(favs.length>0){
-    html+='<div style="font-size:.73rem;font-weight:700;color:#e65c00;margin-bottom:7px">⭐ محلاتك المفضلة</div>';
-    html+=favs.map(s=>renderRow(s,true)).join('');
-  }
-  if(rest.length>0){
-    if(favs.length>0){
-      const restCount=rest.length;
-      html+='<div id="spick-show-all" data-open="'+(showAll?1:0)+'" onclick="toggleRestStores()" style="margin-top:9px;margin-bottom:'+(showAll?'7px':'0')+';padding:9px 14px;background:var(--cream);border:2px dashed var(--border);border-radius:var(--r);cursor:pointer;text-align:center;font-size:.83rem;font-weight:700;color:var(--muted)">'
-        +(showAll?'▲ إخفاء المحلات الأخرى':'▼ عرض كل المحلات ('+restCount+')')
-        +'</div>';
-      html+='<div id="rest-stores" style="'+(showAll?'':'display:none')+'">'+rest.map(s=>renderRow(s,false)).join('')+'</div>';
-    } else {
-      html+='<div style="font-size:.73rem;font-weight:700;color:var(--muted);margin-bottom:7px">🏪 اختر المحل</div>';
-      html+=rest.map(s=>renderRow(s,false)).join('');
+  let h='';
+  if(favs.length){h+='<div style="font-size:.71rem;font-weight:700;color:#e65c00;margin-bottom:6px">⭐ محلاتك المفضلة</div>';h+=favs.map(s=>row(s,true)).join('');}
+  if(rest.length){
+    if(favs.length){
+      h+='<div id="spick-show-all" data-open="'+(showAll?1:0)+'" onclick="toggleRest()" style="margin-top:8px;margin-bottom:'+(showAll?'6px':'0')+';padding:8px 13px;background:var(--cream);border:2px dashed var(--border);border-radius:var(--r);cursor:pointer;text-align:center;font-size:.81rem;font-weight:700;color:var(--muted)">'+(showAll?'▲ إخفاء المحلات الأخرى':'▼ عرض كل المحلات ('+rest.length+')')+'</div>';
+      h+='<div id="rest-stores" style="'+(showAll?'':'display:none')+'">'+rest.map(s=>row(s,false)).join('')+'</div>';
+    }else{
+      h+='<div style="font-size:.71rem;font-weight:700;color:var(--muted);margin-bottom:6px">🏪 اختر المحل</div>';
+      h+=rest.map(s=>row(s,false)).join('');
     }
   }
-  document.getElementById('spick').innerHTML=html;
+  const el=document.getElementById('spick');if(el) el.innerHTML=h;
 }
 
-function toggleRestStores(){
-  const btn=document.getElementById('spick-show-all');
-  const rest=document.getElementById('rest-stores');
-  if(!btn||!rest) return;
-  const isOpen=btn.dataset.open==='1';
-  btn.dataset.open=isOpen?'0':'1';
-  rest.style.display=isOpen?'none':'block';
-  const restCount=(stores.length?stores:STORES_LOCAL).filter(s=>(getStoreUsage()[s.name]||0)===0).length;
-  btn.textContent=isOpen?'▼ عرض كل المحلات ('+restCount+')':'▲ إخفاء المحلات الأخرى';
+function toggleRest(){
+  const btn=document.getElementById('spick-show-all'),rest=document.getElementById('rest-stores');
+  if(!btn||!rest)return;
+  const o=btn.dataset.open==='1';btn.dataset.open=o?'0':'1';
+  rest.style.display=o?'none':'block';
+  btn.textContent=o?'▼ عرض كل المحلات ('+STORES.filter(s=>(getUsage()[s.name]||0)===0).length+')':'▲ إخفاء المحلات الأخرى';
 }
 
 function pickSt(n){
-  selStore=n;
-  recordStoreUsage(n);
-  buildStorePicker();
-  const store=(stores.length?stores:STORES_LOCAL).find(s=>s.name===n);
-  if(store&&store.lat&&mapClient) mapClient.setView([store.lat,store.lng],16);
+  selStore=n;recUsage(n);buildStorePicker();
+  const s=STORES.find(x=>x.name===n);
+  if(s&&s.lat&&mapClient) mapClient.setView([s.lat,s.lng],16);
 }
 
 // ══════════════════════════════════════════════
 // MAPS
 // ══════════════════════════════════════════════
-async function reverseGeocode(lat,lng){
-  try{
-    const r=await fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lng+'&format=json&accept-language=ar');
-    const d=await r.json();
-    return d.address?.road||d.address?.suburb||d.address?.neighbourhood||'';
-  }catch(e){return '';}
+async function revGeo(lat,lng){
+  try{const r=await fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lng+'&format=json&accept-language=ar');const d=await r.json();return d.address?.road||d.address?.suburb||d.address?.neighbourhood||'';}catch(e){return '';}
 }
+function storeMarkerHtml(s){return '<div style="background:#1a3a6b;color:#fff;border-radius:6px;padding:2px 7px;font-family:Tajawal;font-size:10px;font-weight:700;white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.18)">'+s.icon+' '+s.name+'</div>';}
 
 function initClientMap(){
-  if(mapClient) return;
+  if(mapClient)return;
   mapClient=L.map('map-client',{zoomControl:true,attributionControl:false}).setView([DEFAULT_LAT,DEFAULT_LNG],15);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(mapClient);
-  const list=stores.length?stores:STORES_LOCAL;
-  list.forEach(s=>{
-    if(s.lat&&s.lng) L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:'<div style="background:#1a3a6b;color:#fff;border-radius:7px;padding:2px 7px;font-family:Tajawal;font-size:10px;font-weight:700;white-space:nowrap">'+s.icon+' '+s.name+'</div>',iconAnchor:[0,0]})}).addTo(mapClient);
-  });
+  STORES.forEach(s=>{if(s.lat&&s.lng) L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:storeMarkerHtml(s),iconAnchor:[0,0]})}).addTo(mapClient);});
 
-  async function setClientLoc(lat,lng){
+  async function setLoc(lat,lng){
     clientLat=lat.toFixed(6);clientLng=lng.toFixed(6);
     if(clientMarker) mapClient.removeLayer(clientMarker);
-    clientMarker=L.marker([lat,lng],{icon:L.divIcon({className:'',html:'<div style="background:#e65c00;width:22px;height:22px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.4)"></div>',iconAnchor:[11,11]})}).addTo(mapClient).bindPopup('📍 موقعك').openPopup();
+    clientMarker=L.marker([lat,lng],{icon:L.divIcon({className:'',html:'<div style="background:#e65c00;width:22px;height:22px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.38)"></div>',iconAnchor:[11,11]})}).addTo(mapClient).bindPopup('📍 موقعك').openPopup();
     mapClient.setView([lat,lng],17);
-    const street=await reverseGeocode(lat,lng);
-    clientStreet=street;
+    const street=await revGeo(lat,lng);clientStreet=street;
     const st=document.getElementById('map-client-status');
     if(st) st.innerHTML='<span style="color:var(--green);font-weight:700">✅ '+(street||'تم تحديد موقعك')+' — انقر لتغيير</span>';
   }
-  mapClient.on('click',e=>setClientLoc(e.latlng.lat,e.latlng.lng));
-  if(window._pendingGPS){setClientLoc(window._pendingGPS.lat,window._pendingGPS.lng);window._pendingGPS=null;}
-  else{
-    mapClient.locate({setView:true,maxZoom:17,enableHighAccuracy:true});
-    mapClient.on('locationfound',e=>setClientLoc(e.latlng.lat,e.latlng.lng));
-    mapClient.on('locationerror',()=>{const st=document.getElementById('map-client-status');if(st)st.innerHTML='<span style="color:var(--muted);font-size:.78rem">⚠️ انقر على الخريطة لتحديد موقعك</span>';});
-  }
+  mapClient.on('click',e=>setLoc(e.latlng.lat,e.latlng.lng));
+  if(window._gps){setLoc(window._gps.lat,window._gps.lng);window._gps=null;}
+  else{mapClient.locate({setView:true,maxZoom:17,enableHighAccuracy:true});mapClient.on('locationfound',e=>setLoc(e.latlng.lat,e.latlng.lng));mapClient.on('locationerror',()=>{const st=document.getElementById('map-client-status');if(st)st.innerHTML='<span style="color:var(--muted);font-size:.77rem">⚠️ انقر على الخريطة لتحديد موقعك</span>';});}
 }
 
 function initDriverMap(){
-  if(mapDriver) return;
+  if(mapDriver)return;
   mapDriver=L.map('map-driver',{zoomControl:true,attributionControl:false}).setView([DEFAULT_LAT,DEFAULT_LNG],14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(mapDriver);
-  const list=stores.length?stores:STORES_LOCAL;
-  list.forEach(s=>{if(s.lat&&s.lng) L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:'<div style="background:#1a3a6b;color:#fff;border-radius:7px;padding:2px 7px;font-family:Tajawal;font-size:10px;font-weight:700;white-space:nowrap">'+s.icon+' '+s.name+'</div>',iconAnchor:[0,0]})}).addTo(mapDriver);});
+  STORES.forEach(s=>{if(s.lat&&s.lng) L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:storeMarkerHtml(s),iconAnchor:[0,0]})}).addTo(mapDriver);});
   updateDriverMap();
 }
-
 function updateDriverMap(){
-  if(!mapDriver) return;
+  if(!mapDriver)return;
   navigator.geolocation?.getCurrentPosition(pos=>{
     driverLat=pos.coords.latitude;driverLng=pos.coords.longitude;
     if(drMarker) mapDriver.removeLayer(drMarker);
-    drMarker=L.marker([driverLat,driverLng],{icon:L.divIcon({className:'',html:'<div style="background:var(--green);color:#fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:17px;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.25)">🚴</div>',iconAnchor:[17,17]})}).addTo(mapDriver).bindPopup('📍 موقعك').openPopup();
+    drMarker=L.marker([driverLat,driverLng],{icon:L.divIcon({className:'',html:'<div style="background:var(--green);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:16px;border:3px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.22)">🚴</div>',iconAnchor:[16,16]})}).addTo(mapDriver).bindPopup('📍 موقعك').openPopup();
     mapDriver.setView([driverLat,driverLng],15);
-    updateDriverPos(driverLat,driverLng);
+    const d=drivers.find(x=>x.name===drName);
+    if(d) sbPatch('drivers','id=eq.'+d.id,{lat:driverLat,lng:driverLng,updated_at:new Date().toISOString()});
   },{enableHighAccuracy:true,timeout:10000});
 }
 function updateDriverLocation(){updateDriverMap();toast('📍 تم تحديث موقعك','ok');}
 
 function initAdminMap(){
-  if(mapAdmin) return;
+  if(mapAdmin)return;
   mapAdmin=L.map('map-admin',{zoomControl:true,attributionControl:false}).setView([DEFAULT_LAT,DEFAULT_LNG],14);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(mapAdmin);
   refreshAdminMap();
 }
 function refreshAdminMap(){
-  if(!mapAdmin) return;
+  if(!mapAdmin)return;
   adminMarkers.forEach(m=>mapAdmin.removeLayer(m));adminMarkers=[];
-  const list=stores.length?stores:STORES_LOCAL;
-  list.forEach(s=>{if(s.lat&&s.lng){const m=L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:'<div style="background:#1a3a6b;color:#fff;border-radius:7px;padding:2px 8px;font-family:Tajawal;font-size:10px;font-weight:700;white-space:nowrap">'+s.icon+' '+s.name+'</div>',iconAnchor:[0,0]})}).addTo(mapAdmin);adminMarkers.push(m);}});
-  drivers.forEach(d=>{if(d.lat&&d.lng){const m=L.marker([d.lat,d.lng],{icon:L.divIcon({className:'',html:'<div style="background:var(--green);color:#fff;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px;border:2px solid #fff">🚴</div>',iconAnchor:[15,15]})}).bindPopup('🚴 '+d.name).addTo(mapAdmin);adminMarkers.push(m);}});
-  orders.filter(o=>o.lat&&o.lng&&['available','dispatched','picked'].includes(o.status)).forEach(o=>{const m=L.marker([o.lat,o.lng],{icon:L.divIcon({className:'',html:'<div style="background:var(--accent2);color:#fff;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:11px;border:2px solid #fff">📦</div>',iconAnchor:[12,12]})}).bindPopup('📦 #'+o.id+' — '+o.name).addTo(mapAdmin);adminMarkers.push(m);});
+  STORES.forEach(s=>{if(s.lat&&s.lng){const m=L.marker([s.lat,s.lng],{icon:L.divIcon({className:'',html:storeMarkerHtml(s),iconAnchor:[0,0]})}).addTo(mapAdmin);adminMarkers.push(m);}});
+  drivers.forEach(d=>{if(d.lat&&d.lng){const m=L.marker([d.lat,d.lng],{icon:L.divIcon({className:'',html:'<div style="background:var(--green);color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid #fff">🚴</div>',iconAnchor:[14,14]})}).bindPopup('🚴 '+d.name).addTo(mapAdmin);adminMarkers.push(m);}});
+  orders.filter(o=>o.lat&&o.lng&&['available','dispatched','picked'].includes(o.status)).forEach(o=>{const m=L.marker([o.lat,o.lng],{icon:L.divIcon({className:'',html:'<div style="background:var(--accent2);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:10px;border:2px solid #fff">📦</div>',iconAnchor:[11,11]})}).bindPopup('📦 #'+o.id+' — '+o.name).addTo(mapAdmin);adminMarkers.push(m);});
 }
 
 // ══════════════════════════════════════════════
-// TRACKING BAR — خط المحطات
+// TRACKING — محطات التتبع الجديدة
 // ══════════════════════════════════════════════
-const TRACK_STEPS=[
-  {key:'pending',   icon:'📤',label:'أُرسل'},
-  {key:'available', icon:'🟢',label:'بانتظار\nالموصل'},
-  {key:'dispatched',icon:'🚴',label:'الموصل\nفي الطريق'},
-  {key:'picked',    icon:'📦',label:'مع\nالموصل'},
-  {key:'delivered', icon:'🎉',label:'وصل!'},
+const TSTEPS=[
+  {key:'pending',   icon:'📤', lbl:'طلبك تحت\nالتجهيز'},
+  {key:'available', icon:'🔍', lbl:'جاري البحث عن\nمندوب التوصيل'},
+  {key:'dispatched',icon:'🚴', lbl:'المندوب\nفي الطريق إليك'},
+  {key:'picked',    icon:'📦', lbl:'المندوب\nفي الطريق إليك'},
+  {key:'delivered', icon:'🎉', lbl:'تم\nالتوصيل'},
 ];
 
-function renderTrackBar(status){
-  const idx=TRACK_STEPS.findIndex(s=>s.key===status);
-  const pct=idx<0?0:(idx/(TRACK_STEPS.length-1))*100;
-  let html='<div class="track-bar">';
-  html+='<div class="track-title">تتبع طلبك</div>';
-  html+='<div class="track-steps">';
-  html+='<div class="track-line"></div>';
-  html+='<div class="track-progress" style="width:'+pct+'%"></div>';
-  TRACK_STEPS.forEach((s,i)=>{
-    const isDone=i<idx,isNow=i===idx;
-    html+='<div class="track-step">';
-    html+='<div class="track-dot '+(isDone?'done':isNow?'now':'')+'">'+s.icon+'</div>';
-    html+='<div class="track-lbl '+(isDone?'done':isNow?'now':'')+'">'+s.label.replace('\n','<br>')+'</div>';
-    html+='</div>';
+function renderTrack(status){
+  if(status==='rejected') return '';
+  // اجمع dispatched و picked في خطوة واحدة للعرض
+  const displaySteps=[
+    {key:'pending',   icon:'📤', lbl:'طلبك تحت التجهيز'},
+    {key:'available', icon:'🔍', lbl:'جاري البحث عن مندوب التوصيل'},
+    {key:'dispatched',icon:'🚴', lbl:'المندوب في الطريق إليك'},
+    {key:'delivered', icon:'🎉', lbl:'تم التوصيل'},
+  ];
+  // تحويل picked → dispatched للعرض
+  const displayStatus=status==='picked'?'dispatched':status;
+  const idx=displaySteps.findIndex(s=>s.key===displayStatus);
+  const pct=idx<0?0:(idx/(displaySteps.length-1))*80+10;
+
+  let h='<div class="track-bar"><div class="track-title">تتبع طلبك</div><div class="track-steps">';
+  h+='<div class="track-line-bg"></div>';
+  h+='<div class="track-line-fill" style="width:'+pct+'%"></div>';
+  displaySteps.forEach((s,i)=>{
+    const done=i<idx,now=i===idx;
+    h+='<div class="track-step"><div class="track-dot'+(done?' done':now?' now':'')+'">'+s.icon+'</div>'
+      +'<div class="track-lbl'+(done?' done':now?' now':'')+'">'+s.lbl.replace('\n','<br>')+'</div></div>';
   });
-  html+='</div></div>';
-  return html;
+  h+='</div></div>';
+  return h;
 }
 
 // ══════════════════════════════════════════════
-// CLIENT RENDER
+// CLIENT
 // ══════════════════════════════════════════════
 async function submitOrder(){
   const addr=document.getElementById('cadr').value.trim();
@@ -1039,71 +914,69 @@ async function submitOrder(){
   const street=clientStreet+(addr?' — '+addr:'');
   const btn=document.getElementById('subbtn');btn.disabled=true;btn.textContent='⏳ جاري...';
   try{
-    const r=await addOrder({name:cName,phone:cPhone,store:selStore,street,details:det,lat:clientLat,lng:clientLng});
+    const storeDat=STORES.find(s=>s.name===selStore);
+    const r=await sbPost('orders',{client_name:cName,client_phone:cPhone,store_name:selStore,street,details:det,client_lat:parseFloat(clientLat),client_lng:parseFloat(clientLng),status:'pending'});
     const success=Array.isArray(r)&&r.length>0;
     if(success){
       const orderId=r[0]?.id||'';
-      const storeDat=(stores.length?stores:STORES_LOCAL).find(s=>s.name===selStore);
       if(storeDat?.phone){
         const items=det.split(/\n|،|,/).map(x=>x.trim()).filter(x=>x);
         let msg='مرحباً 👋\nأنا عميل لدى تطبيق *وصّلني* 🚴\n━━━━━━━━━━━━\n📋 *تفاصيل الطلب'+(orderId?' #'+orderId:'')+'*\n\n';
         items.forEach((it,i)=>{msg+=(i+1)+'. '+it+'\n';});
-        msg+='\n━━━━━━━━━━━━\n👤 الاسم: '+cName+'\n📱 الجوال: '+cPhone+'\n';
-        if(street) msg+='📍 الموقع: '+street+'\n';
-        msg+='\n⚠️ في حال عدم توفر أي صنف يرجى التواصل عبر الواتساب.\nشكراً 🙏';
-        setTimeout(()=>window.open('https://wa.me/966'+storeDat.phone.substring(1)+'?text='+encodeURIComponent(msg),'_blank'),800);
+        msg+='\n━━━━━━━━━━━━\n👤 '+cName+'\n📱 '+cPhone+'\n';
+        if(street) msg+='📍 '+street+'\n';
+        msg+='\n⚠️ إذا كان أي صنف غير متوفر يرجى التواصل عبر الواتساب.\nشكراً 🙏';
+        setTimeout(()=>window.open('https://wa.me/966'+storeDat.phone.substring(1)+'?text='+encodeURIComponent(msg),'_blank'),700);
       }
       document.getElementById('cdet').value='';document.getElementById('cadr').value='';
       selStore=null;buildStorePicker();
       toast('✅ تم إرسال طلبك — سيفتح واتساب المحل','ok');
       await fetchAll();
-    } else throw 0;
+    }else throw 0;
   }catch(e){toast('❌ خطأ في الإرسال','er');}
   btn.disabled=false;btn.textContent='✅ أرسل الطلب';
 }
 
 function renderClient(){
-  if(!cPhone) cPhone=localStorage.getItem('w_phone')||null;
-  const mine=cPhone?orders.filter(o=>String(o.phone).trim()===String(cPhone).trim()).reverse():[];
+  if(!cPhone)return;
+  const mine=orders.filter(o=>String(o.phone).trim()===String(cPhone).trim()).reverse();
   const st=document.getElementById('cstats');
   if(st){const d=mine.filter(o=>o.status==='delivered').length,a=mine.filter(o=>!['delivered','rejected'].includes(o.status)).length;st.textContent=mine.length?mine.length+' طلب | '+d+' مكتمل | '+a+' نشط':'';}
-  const el=document.getElementById('clist');
-  if(!mine.length){el.innerHTML='<div style="text-align:center;padding:34px;color:var(--muted)"><div style="font-size:3rem;margin-bottom:12px">📭</div><div style="font-size:1.1rem;font-weight:800;margin-bottom:6px">لا توجد طلبات بعد</div></div>';return;}
+  const el=document.getElementById('clist');if(!el)return;
+  if(!mine.length){el.innerHTML='<div style="text-align:center;padding:30px;color:var(--muted)"><div style="font-size:3rem;margin-bottom:11px">📭</div><div style="font-size:1.05rem;font-weight:800">لا توجد طلبات بعد</div></div>';return;}
   el.innerHTML=mine.map(o=>{
-    const isDone=o.status==='delivered';
-    const statusIcon={pending:'⏳',available:'🟢',dispatched:'🚴',picked:'📦',delivered:'🎉',rejected:'❌'}[o.status]||'⏳';
-    const statusColor={pending:'#b45309',available:'var(--green)',dispatched:'var(--blue)',picked:'#9a3412',delivered:'var(--green)',rejected:'var(--accent)'}[o.status]||'var(--muted)';
-    return '<div style="background:var(--white);border:2px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden;'+(isDone?'border-color:var(--green)':['available','dispatched','picked'].includes(o.status)?'border-color:var(--accent2)':'')+'">'
-      +'<div style="padding:12px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px;cursor:pointer" onclick="toggleOrderDetail('+o.id+')">'
-      +'<div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0">'
-      +'<div style="font-size:1.2rem">'+((stores.length?stores:STORES_LOCAL).find(s=>s.name===o.store)?.icon||'🏪')+'</div>'
-      +'<div style="flex:1;min-width:0"><div style="font-size:.92rem;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+o.store+'</div>'
-      +'<div style="font-size:.75rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+o.details.substring(0,35)+(o.details.length>35?'...':'')+'</div></div></div>'
-      +'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">'
-      +'<span style="font-size:.74rem;font-weight:800;color:'+statusColor+'">'+statusIcon+' '+(ST[o.status]?.l||o.status)+'</span>'
-      +'<span style="font-size:.7rem;color:var(--muted)">'+o.time.substring(5,16)+'</span>'
-      +'</div></div>'
-      // خط المحطات
-      +(o.status!=='rejected'?renderTrackBar(o.status):'')
-      +'<div id="od-'+o.id+'" style="display:none;padding:12px 15px;padding-top:0;border-top:1px solid var(--border)">'
-      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px">'
-      +'<div style="background:var(--cream);border-radius:9px;padding:9px 11px"><div style="font-size:.67rem;color:var(--muted);margin-bottom:2px">📍 العنوان</div><div style="font-size:.85rem;font-weight:700">'+(o.street||'—')+'</div></div>'
-      +'<div style="background:var(--cream);border-radius:9px;padding:9px 11px"><div style="font-size:.67rem;color:var(--muted);margin-bottom:2px">🚴 الموصل</div><div style="font-size:.85rem;font-weight:700;color:'+(o.driver?'var(--blue)':'var(--muted)')+'">'+( o.driver||'لم يُحدد')+'</div></div>'
+    const sDone=o.status==='delivered';
+    const sIco={pending:'⏳',available:'🔍',dispatched:'🚴',picked:'📦',delivered:'🎉',rejected:'❌'}[o.status]||'⏳';
+    const sCol={pending:'#b45309',available:'#0369a1',dispatched:'var(--green)',picked:'var(--green)',delivered:'var(--green)',rejected:'var(--accent)'}[o.status];
+    const sLbl={pending:'طلبك تحت التجهيز',available:'جاري البحث عن مندوب',dispatched:'المندوب في الطريق إليك',picked:'المندوب في الطريق إليك',delivered:'تم التوصيل ✅',rejected:'تم الرفض'}[o.status]||o.status;
+    return '<div style="background:var(--white);border:2px solid '+(sDone?'var(--green)':['available','dispatched','picked'].includes(o.status)?'var(--accent2)':'var(--border)')+';border-radius:var(--r);margin-bottom:8px;overflow:hidden">'
+      +'<div style="padding:11px 14px;display:flex;align-items:center;justify-content:space-between;gap:7px;cursor:pointer" onclick="toggleOD('+o.id+')">'
+      +'<div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0">'
+      +'<div style="font-size:1.15rem">'+( STORES.find(s=>s.name===o.store)?.icon||'🏪')+'</div>'
+      +'<div style="flex:1;min-width:0"><div style="font-size:.9rem;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+o.store+'</div>'
+      +'<div style="font-size:.73rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+o.details.substring(0,38)+(o.details.length>38?'...':'')+'</div></div></div>'
+      +'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0">'
+      +'<span style="font-size:.72rem;font-weight:800;color:'+sCol+'">'+sIco+' '+sLbl+'</span>'
+      +'<span style="font-size:.68rem;color:var(--muted)">'+o.time.substring(5,16)+'</span></div></div>'
+      +renderTrack(o.status)
+      +'<div id="od-'+o.id+'" style="display:none;padding:11px 14px;padding-top:0;border-top:1px solid var(--border)">'
+      +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px">'
+      +'<div style="background:var(--cream);border-radius:8px;padding:8px 10px"><div style="font-size:.65rem;color:var(--muted);margin-bottom:2px">📍 الموقع</div><div style="font-size:.83rem;font-weight:700">'+(o.street||'—')+'</div></div>'
+      +'<div style="background:var(--cream);border-radius:8px;padding:8px 10px"><div style="font-size:.65rem;color:var(--muted);margin-bottom:2px">🚴 المندوب</div><div style="font-size:.83rem;font-weight:700;color:'+(o.driver?'var(--blue)':'var(--muted)')+'">'+( o.driver||'لم يُحدد')+'</div></div>'
       +'</div>'
-      +(isDone?'<div style="background:var(--green);border-radius:9px;padding:10px;color:#fff;font-weight:800;text-align:center;margin-top:8px">🎉 تم التسليم!</div>':'')
-      +(o.status==='rejected'?'<div class="note n-err" style="margin-top:8px">❌ تم رفض الطلب من المحل</div>':'')
+      +(sDone?'<div style="background:var(--green);border-radius:8px;padding:9px;color:#fff;font-weight:800;text-align:center;margin-top:7px">🎉 تم التوصيل!</div>':'')
+      +(o.status==='rejected'?'<div class="note n-err" style="margin-top:7px">❌ تم رفض الطلب من المحل</div>':'')
       +'</div></div>';
   }).join('');
 }
-
-function toggleOrderDetail(id){const el=document.getElementById('od-'+id);if(el)el.style.display=el.style.display==='none'?'block':'none';}
-function toggleOrders(){const el=document.getElementById('orders-collapse'),arrow=document.getElementById('orders-arrow');if(el.style.display==='none'){el.style.display='block';arrow.textContent='▲';}else{el.style.display='none';arrow.textContent='▼';}}
+function toggleOD(id){const el=document.getElementById('od-'+id);if(el)el.style.display=el.style.display==='none'?'block':'none';}
+function toggleOrders(){const el=document.getElementById('orders-collapse'),ar=document.getElementById('orders-arrow');if(el.style.display==='none'){el.style.display='block';ar.textContent='▲';}else{el.style.display='none';ar.textContent='▼';}}
 
 // ══════════════════════════════════════════════
-// STORE RENDER
+// STORE
 // ══════════════════════════════════════════════
 function renderStore(){
-  const f=document.getElementById('sflt').value;
+  const f=document.getElementById('sflt')?.value||'';
   const my=orders.filter(o=>o.store===stName);
   const c={pending:0,available:0,dispatched:0,picked:0,delivered:0};
   my.forEach(o=>{if(c[o.status]!==undefined)c[o.status]++;});
@@ -1112,87 +985,85 @@ function renderStore(){
   document.getElementById('ss3').textContent=c.picked;
   document.getElementById('ss4').textContent=c.delivered;
   let list=[...my].reverse();if(f)list=list.filter(o=>o.status===f);
-  const el=document.getElementById('slist');
-  if(!list.length){el.innerHTML='<div style="text-align:center;padding:28px;color:var(--muted)"><div style="font-size:3rem">📭</div><div style="margin-top:8px;font-weight:800">لا توجد طلبات</div></div>';return;}
+  const el=document.getElementById('slist');if(!el)return;
+  if(!list.length){el.innerHTML='<div style="text-align:center;padding:26px;color:var(--muted)"><div style="font-size:2.8rem">📭</div><div style="margin-top:7px;font-weight:800">لا توجد طلبات</div></div>';return;}
   el.innerHTML=list.map(o=>{
     const mp=(o.lat&&o.lng)?'<a href="https://maps.google.com/?q='+o.lat+','+o.lng+'" target="_blank" class="btn btn-ghost btn-sm">🗺️ موقع العميل</a>':'';
     return '<div class="oc '+(o.status==='pending'?'hot':o.status==='delivered'?'done':'')+'">'
-      +'<div class="oc-head"><span style="font-size:.78rem;font-weight:900;color:var(--blue)">#'+o.id+'</span>'+bdg(o.status)+'<span style="font-size:.72rem;color:var(--muted)">'+o.time+'</span></div>'
-      +'<div class="oc-grid">'
-      +'<div class="of"><span class="l">👤 العميل</span>'+o.name+'</div>'
+      +'<div class="oc-head"><span style="font-size:.76rem;font-weight:900;color:var(--blue)">#'+o.id+'</span>'+bdg(o.status)+'<span style="font-size:.7rem;color:var(--muted)">'+o.time+'</span></div>'
+      +'<div class="oc-grid"><div class="of"><span class="l">👤 العميل</span>'+o.name+'</div>'
       +'<div class="of"><span class="l">📱 الجوال</span><span dir="ltr">'+o.phone+'</span></div>'
       +'<div class="of"><span class="l">📍 الموقع</span>'+o.street+'</div>'
-      +(o.driver?'<div class="of"><span class="l">🚴 الموصل</span><b style="color:var(--blue)">'+o.driver+'</b></div>':'')
-      +'<div class="of" style="grid-column:span 3"><span class="l">🛒 الطلب</span>'+o.details+'</div>'
-      +'</div>'
+      +(o.driver?'<div class="of"><span class="l">🚴 المندوب</span><b style="color:var(--blue)">'+o.driver+'</b></div>':'')
+      +'<div class="of" style="grid-column:span 3"><span class="l">🛒 الطلب</span>'+o.details+'</div></div>'
       +(o.status==='pending'?'<div class="oc-act"><button class="btn btn-green" onclick="storeApprove('+o.id+')">✅ اعتماد</button><button class="btn btn-danger" onclick="storeReject('+o.id+')">❌ رفض</button>'+mp+'</div>':'')
-      +(o.status==='available'?'<div class="note n-go">🟢 معروض على الموصلين</div>':'')
-      +(o.status==='dispatched'?'<div class="note n-info">🚴 الموصل <b>'+o.driver+'</b> في طريقه</div>':'')
-      +(o.status==='picked'?'<div class="note n-hot">📦 الموصل <b>'+o.driver+'</b> في الطريق إلى العميل</div>':'')
+      +(o.status==='available'?'<div class="note n-go">🔍 جاري البحث عن مندوب توصيل</div>':'')
+      +(o.status==='dispatched'?'<div class="note n-info">🚴 المندوب <b>'+o.driver+'</b> في طريقه لاستلام الطلب</div>':'')
+      +(o.status==='picked'?'<div class="note n-hot">📦 المندوب <b>'+o.driver+'</b> في الطريق إلى العميل</div>':'')
       +(o.status==='delivered'?'<div class="note n-ok">🎉 تم التسليم للعميل</div>':'')
       +'</div>';
   }).join('');
 }
-async function storeApprove(id){try{await updateStatus(id,'available');toast('✅ تم الاعتماد','ok');await fetchAll();}catch(e){toast('❌ خطأ','er');}}
-async function storeReject(id){try{await updateStatus(id,'rejected');toast('❌ تم الرفض','ok');await fetchAll();}catch(e){toast('❌ خطأ','er');}}
+async function storeApprove(id){try{const now=new Date().toISOString();await sbPatch('orders','id=eq.'+id,{status:'available'});toast('✅ تم الاعتماد','ok');await fetchAll();}catch(e){toast('❌ خطأ','er');}}
+async function storeReject(id){try{await sbPatch('orders','id=eq.'+id,{status:'rejected'});toast('❌ تم الرفض','ok');await fetchAll();}catch(e){toast('❌ خطأ','er');}}
 
 // ══════════════════════════════════════════════
-// DRIVER RENDER
+// DRIVER
 // ══════════════════════════════════════════════
 function renderDriver(){
   const done=orders.filter(o=>o.driver===drName&&o.status==='delivered').length;
   const myActive=orders.filter(o=>o.driver===drName&&['dispatched','picked'].includes(o.status));
   const available=orders.filter(o=>o.status==='available');
   document.getElementById('ds1').textContent=available.length;
-  document.getElementById('ds2').textContent=myActive.filter(o=>o.status==='picked').length;
+  document.getElementById('ds2').textContent=myActive.length;
   document.getElementById('ds3').textContent=done;
   document.getElementById('ds4').textContent=orders.filter(o=>o.driver===drName).length;
   const busy=myActive.length>0;
-  const dot=document.getElementById('driver-dot');const lbl=document.getElementById('driver-status-label');
-  if(dot){dot.className='ds-dot'+(busy?' busy':'');}
-  if(lbl) lbl.textContent=busy?'🟠 مشغول':'🟢 متاح';
+  document.getElementById('driver-dot').className='ds-dot'+(busy?' busy':'');
+  document.getElementById('driver-status-label').textContent=busy?'🟠 مشغول':'🟢 متاح';
   const e=calcDrv(done);
   document.getElementById('damt').textContent=e.drv.toFixed(2)+' ريال';
   document.getElementById('dsub').textContent=done+' طلب مسلّم';
-  const el=document.getElementById('dlist');
-  const all=[...available,...myActive].reverse();
-  if(!all.length){el.innerHTML='<div style="text-align:center;padding:28px;color:var(--muted)"><div style="font-size:3rem">📭</div><div style="margin-top:8px;font-weight:800">لا توجد طلبات حالياً</div></div>';return;}
+  const el=document.getElementById('dlist');if(!el)return;
+  const all=[...available,...myActive];
+  if(!all.length){el.innerHTML='<div style="text-align:center;padding:26px;color:var(--muted)"><div style="font-size:2.8rem">📭</div><div style="margin-top:7px;font-weight:800">لا توجد طلبات حالياً</div></div>';return;}
   el.innerHTML=all.map(o=>{
     const isAvail=o.status==='available';
     return '<div class="oc '+(isAvail?'hot':o.status==='picked'?'done':'')+'">'
-      +'<div class="oc-head"><span style="font-size:.78rem;font-weight:900;color:var(--blue)">#'+o.id+'</span>'+bdg(o.status)+'<span style="font-size:.72rem;color:var(--muted)">'+o.time+'</span></div>'
-      +'<div class="oc-grid">'
-      +'<div class="of"><span class="l">👤 العميل</span>'+o.name+'</div>'
+      +'<div class="oc-head"><span style="font-size:.76rem;font-weight:900;color:var(--blue)">#'+o.id+'</span>'+bdg(o.status)+'<span style="font-size:.7rem;color:var(--muted)">'+o.time+'</span></div>'
+      +'<div class="oc-grid"><div class="of"><span class="l">👤 العميل</span>'+o.name+'</div>'
       +'<div class="of"><span class="l">📱 الجوال</span>'+(isAvail?o.phone:'<a href="tel:'+o.phone+'" style="color:var(--blue);font-weight:800" dir="ltr">'+o.phone+'</a>')+'</div>'
       +'<div class="of"><span class="l">🏬 المحل</span>'+o.store+'</div>'
       +'<div class="of"><span class="l">📍 الموقع</span>'+o.street+'</div>'
-      +'<div class="of" style="grid-column:span 2"><span class="l">🛒 الطلب</span>'+o.details+'</div>'
-      +'</div>'
+      +'<div class="of" style="grid-column:span 2"><span class="l">🛒 الطلب</span>'+o.details+'</div></div>'
       +'<div class="oc-act">'
       +(isAvail?'<button class="btn btn-accept" onclick="acceptOrder('+o.id+')">✅ قبول الطلب</button>':'')
       +(o.status==='dispatched'?'<button class="btn btn-blue" onclick="dAct('+o.id+',\'picked\')">📦 استلمت من المحل</button>':'')
       +(o.status==='picked'?'<button class="btn btn-green" onclick="dAct('+o.id+',\'delivered\')">🎉 سلّمت للعميل</button>':'')
       +(!isAvail&&o.lat&&o.lng?'<a href="https://maps.google.com/?q='+o.lat+','+o.lng+'" target="_blank" class="btn btn-ghost btn-sm">🗺️ موقع العميل</a>':'')
       +'</div>'
-      +(o.status==='dispatched'?'<div class="note n-info">🏪 توجّه للمحل <b>'+o.store+'</b></div>':'')
+      +(o.status==='dispatched'?'<div class="note n-info">🏪 توجّه للمحل <b>'+o.store+'</b> لاستلام الطلب</div>':'')
       +(o.status==='picked'?'<div class="note n-hot">📦 في الطريق إلى <b>'+o.name+'</b></div>':'')
       +'</div>';
   }).join('');
 }
-async function dAct(id,st){try{await updateStatus(id,st);toast(st==='picked'?'📦 تم الاستلام':'🎉 تم التسليم!','ok');await fetchAll();}catch(e){toast('❌ خطأ','er');}}
-
+async function dAct(id,st){
+  try{const now=new Date().toISOString();const patch={status:st};if(st==='picked')patch.picked_at=now;if(st==='delivered')patch.delivered_at=now;await sbPatch('orders','id=eq.'+id,patch);toast(st==='picked'?'📦 تم الاستلام':'🎉 تم التسليم!','ok');await fetchAll();}catch(e){toast('❌ خطأ','er');}
+}
 async function acceptOrder(id){
   document.querySelectorAll('.btn-accept').forEach(b=>{b.disabled=true;b.textContent='⏳';});
   try{
-    const r=await acceptOrderDB(id);
-    if(r.success){toast('✅ قبلت الطلب #'+id,'ok');playS('dispatch');await fetchAll();}
-    else if(r.taken){toast('⚠️ سبقك موصل آخر','er');await fetchAll();}
-    else{toast('❌ خطأ في القبول','er');document.querySelectorAll('.btn-accept').forEach(b=>{b.disabled=false;b.textContent='✅ قبول الطلب';});}
-  }catch(e){toast('❌ خطأ في الاتصال','er');document.querySelectorAll('.btn-accept').forEach(b=>{b.disabled=false;b.textContent='✅ قبول الطلب';});}
+    const data=await sbFetch('orders','?id=eq.'+id+'&select=status');
+    if(!data[0]||data[0].status!=='available'){toast('⚠️ سبقك مندوب آخر','er');await fetchAll();return;}
+    const d=drivers.find(x=>x.name===drName);
+    const r=await sbPatch('orders','id=eq.'+id+'&status=eq.available',{status:'dispatched',driver_id:d?.id||null,driver_name:drName});
+    if(Array.isArray(r)&&r.length>0){toast('✅ قبلت الطلب #'+id,'ok');playS('dispatch');await fetchAll();}
+    else{toast('⚠️ سبقك مندوب آخر','er');await fetchAll();}
+  }catch(e){toast('❌ خطأ','er');document.querySelectorAll('.btn-accept').forEach(b=>{b.disabled=false;b.textContent='✅ قبول الطلب';});}
 }
 
 // ══════════════════════════════════════════════
-// ADMIN RENDER
+// ADMIN
 // ══════════════════════════════════════════════
 function renderAdmin(){
   const done=orders.filter(o=>o.status==='delivered');
@@ -1202,72 +1073,39 @@ function renderAdmin(){
   document.getElementById('as4').textContent=done.length;
   const ea=calcAll(done);
   document.getElementById('aamt').textContent=ea._a.toFixed(2)+' ريال';
-  document.getElementById('asub').textContent='إجمالي '+done.length+' طلب مسلّم';
+  document.getElementById('asub').textContent='إجمالي '+done.length+' طلب';
 
-  // جدول الطلبات
   const srch=(document.getElementById('asrch')?.value||'').toLowerCase();
   const flt=document.getElementById('aflt')?.value||'';
-  let list=[...orders].reverse().filter(o=>{
+  const list=[...orders].reverse().filter(o=>{
     const ms=!srch||o.name.toLowerCase().includes(srch)||o.phone.includes(srch)||String(o.id).includes(srch);
     return ms&&(!flt||o.status===flt);
   });
   const tb=document.getElementById('atb');
-  if(tb){
-    tb.innerHTML=!list.length?'<tr><td colspan="8" style="text-align:center;padding:20px;color:var(--muted)">لا توجد نتائج</td></tr>':list.map(o=>'<tr><td style="color:var(--blue);font-weight:900">#'+o.id+'</td><td><b>'+o.name+'</b></td><td dir="ltr" style="color:var(--blue2)">'+o.phone+'</td><td>'+o.store+'</td><td style="max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+o.details+'</td><td>'+bdg(o.status)+'</td><td>'+(o.driver?'<b style="color:var(--blue)">'+o.driver+'</b>':'—')+'</td><td style="color:var(--muted);font-size:.74rem;white-space:nowrap">'+o.time+'</td></tr>').join('');
-  }
+  if(tb) tb.innerHTML=!list.length?'<tr><td colspan="8" style="text-align:center;padding:18px;color:var(--muted)">لا توجد نتائج</td></tr>':list.map(o=>'<tr><td style="color:var(--blue);font-weight:900">#'+o.id+'</td><td><b>'+o.name+'</b></td><td dir="ltr">'+o.phone+'</td><td>'+o.store+'</td><td style="max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+o.details+'</td><td>'+bdg(o.status)+'</td><td>'+(o.driver?'<b style="color:var(--blue)">'+o.driver+'</b>':'—')+'</td><td style="color:var(--muted);font-size:.72rem;white-space:nowrap">'+o.time+'</td></tr>').join('');
 
-  // جدول الموصلين
   const dtb=document.getElementById('drivers-tb');
-  if(dtb){
-    dtb.innerHTML=Object.entries(DRV_PINS).map(([pin,n])=>{
-      const cnt=done.filter(o=>o.driver===n).length;
-      const e=calcDrv(cnt);
-      const busy=orders.filter(o=>o.driver===n&&['dispatched','picked'].includes(o.status)).length>0;
-      return '<tr><td><b>🚴 '+n+'</b></td><td>'+(busy?'<span class="bdg b-pick">مشغول</span>':'<span class="bdg b-done">متاح</span>')+'</td><td style="font-weight:800;color:var(--blue)">'+cnt+'</td><td style="color:var(--green);font-weight:700">'+e.drv.toFixed(2)+' ريال</td></tr>';
-    }).join('');
-  }
+  if(dtb) dtb.innerHTML=Object.values(DRV_PINS).map(n=>{const c=done.filter(o=>o.driver===n).length;const e=calcDrv(c);const busy=orders.filter(o=>o.driver===n&&['dispatched','picked'].includes(o.status)).length>0;return '<tr><td><b>🚴 '+n+'</b></td><td>'+(busy?'<span class="bdg b-pick">مشغول</span>':'<span class="bdg b-done">متاح</span>')+'</td><td style="font-weight:800;color:var(--blue)">'+c+'</td><td style="color:var(--green);font-weight:700">'+e.drv.toFixed(2)+' ريال</td></tr>';}).join('');
 
-  // قائمة المحلات مع تحديد الموقع
   const sal=document.getElementById('stores-admin-list');
   if(sal){
-    const list2=stores.length?stores:STORES_LOCAL;
-    sal.innerHTML='<div style="margin-bottom:10px;font-size:.8rem;color:var(--muted)">اضغط 📍 لتحديد أو تعديل موقع أي محل</div>'
-      +'<div style="display:flex;flex-direction:column;gap:8px">'
-      +list2.map(s=>{
-        const sOrders=orders.filter(o=>o.store===s.name);
-        const hasLoc=s.lat&&s.lng&&s.lat!==24.1520;
-        return '<div style="background:var(--cream);border:2px solid '+(hasLoc?'#86efac':'var(--border)')+';border-radius:var(--r);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">'
-          +'<div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0">'
-          +'<div style="font-size:1.5rem">'+s.icon+'</div>'
-          +'<div><div style="font-size:.94rem;font-weight:800">'+s.name+'</div>'
-          +'<div style="font-size:.73rem;color:'+(hasLoc?'var(--green)':'var(--accent)')+';margin-top:1px;font-weight:700">'+(hasLoc?'✅ موقع محدد':'⚠️ موقع غير محدد')+'</div>'
-          +'<div style="font-size:.73rem;color:var(--muted)">طلبات: '+sOrders.length+' | مسلّمة: '+sOrders.filter(o=>o.status==='delivered').length+'</div>'
-          +'</div></div>'
-          +'<button class="btn btn-blue btn-sm" onclick="openSlocAdmin(\''+s.name.replace(/'/g,"\\'")+'\')" >📍 '+(hasLoc?'تعديل':'تحديد')+'</button>'
-          +'</div>';
-      }).join('')
-      +'</div>';
+    sal.innerHTML='<div style="margin-bottom:9px;font-size:.78rem;color:var(--muted)">اضغط 📍 لتحديد موقع أي محل على الخريطة</div><div style="display:flex;flex-direction:column;gap:7px">'
+      +STORES.map(s=>{const so=orders.filter(o=>o.store===s.name);const hasLoc=s.lat&&s.lng&&s.lat!==24.1520;return '<div style="background:var(--cream);border:2px solid '+(hasLoc?'#86efac':'var(--border)')+';border-radius:var(--r);padding:10px 13px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px"><div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0"><div style="font-size:1.45rem">'+s.icon+'</div><div><div style="font-size:.92rem;font-weight:800">'+s.name+'</div><div style="font-size:.71rem;color:'+(hasLoc?'var(--green)':'var(--accent)')+';font-weight:700">'+(hasLoc?'✅ موقع محدد':'⚠️ موقع غير محدد')+'</div><div style="font-size:.71rem;color:var(--muted)">طلبات: '+so.length+' | مسلّمة: '+so.filter(o=>o.status==='delivered').length+'</div></div></div><button class="btn btn-blue btn-sm" onclick="openSlocAdmin(\''+s.name.replace(/'/g,"\\'")+'\')">📍 '+(hasLoc?'تعديل':'تحديد')+'</button></div>';}).join('')+'</div>';
   }
 
-  // آخر التوزيعات
   const nl=document.getElementById('anotif');
-  if(nl){
-    const disp=[...orders].filter(o=>['dispatched','picked','delivered'].includes(o.status)).reverse().slice(0,8);
-    nl.innerHTML=disp.length?disp.map(o=>'<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--cream);border-radius:var(--r);border:1.5px solid var(--border);margin-bottom:7px"><div style="font-size:1.3rem">'+(o.status==='delivered'?'✅':o.status==='picked'?'📦':'🚴')+'</div><div style="flex:1"><div style="font-size:.88rem;font-weight:800">طلب #'+o.id+' — '+o.store+'</div><div style="font-size:.73rem;color:var(--muted);margin-top:2px">🚴 '+(o.driver||'—')+' | 👤 '+o.name+' | '+o.time+'</div></div>'+bdg(o.status)+'</div>').join(''):'<div style="text-align:center;color:var(--muted);padding:14px">لا توجد توزيعات بعد</div>';
-  }
+  if(nl) nl.innerHTML=[...orders].filter(o=>['dispatched','picked','delivered'].includes(o.status)).reverse().slice(0,8).map(o=>'<div style="display:flex;align-items:center;gap:9px;padding:10px 13px;background:var(--cream);border-radius:var(--r);border:1.5px solid var(--border);margin-bottom:6px"><div style="font-size:1.25rem">'+(o.status==='delivered'?'✅':o.status==='picked'?'📦':'🚴')+'</div><div style="flex:1"><div style="font-size:.86rem;font-weight:800">طلب #'+o.id+' — '+o.store+'</div><div style="font-size:.71rem;color:var(--muted);margin-top:1px">🚴 '+(o.driver||'—')+' | 👤 '+o.name+' | '+o.time+'</div></div>'+bdg(o.status)+'</div>').join('')||'<div style="text-align:center;color:var(--muted);padding:13px">لا توجد توزيعات بعد</div>';
 }
 
-function showAdminSetup(){mgTab('stores');document.getElementById('mp-stores').classList.add('show');}
-
 // ══════════════════════════════════════════════
-// STORE LOCATION
+// STORE LOCATION MODAL
 // ══════════════════════════════════════════════
-let slocMap=null,slocMarker=null,slocLat=null,slocLng=null,slocStoreName=null;
+let slocMap=null,slocMarker=null,slocLat=null,slocLng=null,slocName=null;
 
-function openSlocAdmin(name){slocStoreName=name;_openSlocModal(name);}
-function openSlocFromStore(){slocStoreName=stName;_openSlocModal(stName);}
+function openSlocAdmin(name){slocName=name;_openSloc(name);}
+function openSlocFromStore(){slocName=stName;_openSloc(stName);}
 
-function _openSlocModal(name){
+function _openSloc(name){
   slocLat=null;slocLng=null;slocMarker=null;
   document.getElementById('sloc-name').textContent=name;
   document.getElementById('sloc-addr').textContent='🔴 انقر على الخريطة أو اضغط GPS';
@@ -1276,62 +1114,44 @@ function _openSlocModal(name){
   document.getElementById('sloc-modal').style.display='flex';
   setTimeout(()=>{
     if(slocMap){slocMap.remove();slocMap=null;}
-    const list=stores.length?stores:STORES_LOCAL;
-    const store=list.find(s=>s.name===name);
-    const iLat=store?.lat||DEFAULT_LAT,iLng=store?.lng||DEFAULT_LNG;
+    const s=STORES.find(x=>x.name===name);
+    const iLat=s?.lat||DEFAULT_LAT,iLng=s?.lng||DEFAULT_LNG;
     slocMap=L.map('sloc-map',{zoomControl:true,attributionControl:false}).setView([iLat,iLng],16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(slocMap);
-    if(store?.lat&&store?.lng&&store.lat!==24.1520){slocLat=store.lat;slocLng=store.lng;_placeSlocMarker(store.lat,store.lng,true);}
-    slocMap.on('click',async e=>{slocLat=e.latlng.lat;slocLng=e.latlng.lng;_placeSlocMarker(slocLat,slocLng,false);document.getElementById('sloc-addr').textContent='⏳ جاري جلب العنوان...';const addr=await reverseGeocode(slocLat,slocLng);document.getElementById('sloc-addr').textContent=addr?'📍 '+addr:'📍 تم تحديد الموقع';});
+    if(s?.lat&&s?.lng&&s.lat!==24.1520){slocLat=s.lat;slocLng=s.lng;_placeSloc(s.lat,s.lng,true);}
+    slocMap.on('click',async e=>{slocLat=e.latlng.lat;slocLng=e.latlng.lng;_placeSloc(slocLat,slocLng,false);document.getElementById('sloc-addr').textContent='⏳ جاري جلب العنوان...';const a=await revGeo(slocLat,slocLng);document.getElementById('sloc-addr').textContent=a?'📍 '+a:'📍 تم تحديد الموقع';});
   },100);
 }
-function _placeSlocMarker(lat,lng,silent){
+function _placeSloc(lat,lng,silent){
   if(slocMarker) slocMap.removeLayer(slocMarker);
-  slocMarker=L.marker([lat,lng],{draggable:true,icon:L.divIcon({className:'',html:'<div style="background:var(--accent);color:#fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:18px;border:3px solid #fff;box-shadow:0 3px 12px rgba(0,0,0,.3)">🏪</div>',iconAnchor:[17,17]})}).addTo(slocMap);
-  slocMarker.on('dragend',async e=>{const p=e.target.getLatLng();slocLat=p.lat;slocLng=p.lng;document.getElementById('sloc-addr').textContent='⏳ جاري جلب العنوان...';const addr=await reverseGeocode(slocLat,slocLng);document.getElementById('sloc-addr').textContent=addr?'📍 '+addr:'📍 تم تحديد الموقع';});
-  document.getElementById('sloc-save').disabled=false;
-  document.getElementById('sloc-clear').style.display='inline-flex';
+  slocMarker=L.marker([lat,lng],{draggable:true,icon:L.divIcon({className:'',html:'<div style="background:var(--accent);color:#fff;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:17px;border:3px solid #fff;box-shadow:0 3px 11px rgba(0,0,0,.28)">🏪</div>',iconAnchor:[16,16]})}).addTo(slocMap);
+  slocMarker.on('dragend',async e=>{const p=e.target.getLatLng();slocLat=p.lat;slocLng=p.lng;document.getElementById('sloc-addr').textContent='⏳ جاري جلب العنوان...';const a=await revGeo(slocLat,slocLng);document.getElementById('sloc-addr').textContent=a?'📍 '+a:'📍 تم تحديد الموقع';});
+  document.getElementById('sloc-save').disabled=false;document.getElementById('sloc-clear').style.display='inline-flex';
   if(!silent) slocMap.setView([lat,lng],17);
 }
 function slocGPS(){
   document.getElementById('sloc-addr').textContent='⏳ جاري تحديد موقعك...';
-  navigator.geolocation?.getCurrentPosition(async pos=>{slocLat=pos.coords.latitude;slocLng=pos.coords.longitude;_placeSlocMarker(slocLat,slocLng,false);const addr=await reverseGeocode(slocLat,slocLng);document.getElementById('sloc-addr').textContent=addr?'📍 '+addr:'📍 تم تحديد موقعك';},()=>{document.getElementById('sloc-addr').textContent='⚠️ تعذر GPS — انقر يدوياً';},{enableHighAccuracy:true,timeout:10000});
+  navigator.geolocation?.getCurrentPosition(async pos=>{slocLat=pos.coords.latitude;slocLng=pos.coords.longitude;_placeSloc(slocLat,slocLng,false);const a=await revGeo(slocLat,slocLng);document.getElementById('sloc-addr').textContent=a?'📍 '+a:'📍 تم تحديد موقعك';},()=>{document.getElementById('sloc-addr').textContent='⚠️ تعذر GPS — انقر يدوياً';},{enableHighAccuracy:true,timeout:10000});
 }
-function slocClear(){
-  if(slocMarker){slocMap.removeLayer(slocMarker);slocMarker=null;}
-  slocLat=null;slocLng=null;
-  document.getElementById('sloc-save').disabled=true;
-  document.getElementById('sloc-clear').style.display='none';
-  document.getElementById('sloc-addr').textContent='🔴 انقر على الخريطة أو اضغط GPS';
-}
+function slocClear(){if(slocMarker){slocMap.removeLayer(slocMarker);slocMarker=null;}slocLat=null;slocLng=null;document.getElementById('sloc-save').disabled=true;document.getElementById('sloc-clear').style.display='none';document.getElementById('sloc-addr').textContent='🔴 انقر على الخريطة أو اضغط GPS';}
 function saveSlocModal(){
   if(!slocLat||!slocLng){toast('حدد الموقع أولاً','er');return;}
-  const list=stores.length?stores:STORES_LOCAL;
-  const store=list.find(s=>s.name===slocStoreName);
-  if(store){store.lat=slocLat;store.lng=slocLng;}
-  const saved=JSON.parse(localStorage.getItem('w_store_locs')||'{}');
-  saved[slocStoreName]={lat:slocLat,lng:slocLng};
-  localStorage.setItem('w_store_locs',JSON.stringify(saved));
-  toast('✅ تم حفظ موقع '+slocStoreName,'ok');
-  closeSlocModal();
-  if(role==='store'&&slocStoreName===stName) updateStoreLocBar();
+  const s=STORES.find(x=>x.name===slocName);if(s){s.lat=slocLat;s.lng=slocLng;}
+  const saved=JSON.parse(localStorage.getItem('w_locs')||'{}');saved[slocName]={lat:slocLat,lng:slocLng};localStorage.setItem('w_locs',JSON.stringify(saved));
+  toast('✅ تم حفظ موقع '+slocName,'ok');closeSlocModal();
+  if(role==='store'&&slocName===stName) updateStoreLocBar();
   if(mapClient){mapClient.remove();mapClient=null;setTimeout(initClientMap,300);}
   if(mapAdmin) refreshAdminMap();
-  renderPage();
 }
 function closeSlocModal(){document.getElementById('sloc-modal').style.display='none';if(slocMap){slocMap.remove();slocMap=null;}}
 
 function loadSavedStoreLocs(){
-  const saved=JSON.parse(localStorage.getItem('w_store_locs')||'{}');
-  const list=stores.length?stores:STORES_LOCAL;
-  Object.keys(saved).forEach(name=>{const s=list.find(x=>x.name===name);if(s){s.lat=saved[name].lat;s.lng=saved[name].lng;}});
+  const saved=JSON.parse(localStorage.getItem('w_locs')||'{}');
+  Object.keys(saved).forEach(name=>{const s=STORES.find(x=>x.name===name);if(s){s.lat=saved[name].lat;s.lng=saved[name].lng;}});
 }
 function updateStoreLocBar(){
-  const list=stores.length?stores:STORES_LOCAL;
-  const s=list.find(x=>x.name===stName);
-  const bar=document.getElementById('store-loc-bar');
-  const info=document.getElementById('store-loc-info');
-  if(!bar||!info) return;
+  const s=STORES.find(x=>x.name===stName);
+  const bar=document.getElementById('store-loc-bar'),info=document.getElementById('store-loc-info');if(!bar||!info)return;
   if(s?.lat&&s?.lng&&s.lat!==24.1520){info.className='slb-info done';info.textContent='✅ موقع محلك محدد';bar.style.borderColor='#86efac';bar.style.background='var(--green-light)';}
   else{info.className='slb-info';info.textContent='📍 موقع محلك غير محدد — حدده للموصلين';}
 }
@@ -1343,11 +1163,11 @@ function checkNotifs(newO){
   if(seen.size===0){newO.forEach(o=>seen.add(o.id+'_'+o.status));return;}
   newO.forEach(o=>{
     const k=o.id+'_'+o.status;if(seen.has(k))return;seen.add(k);
-    if(role==='store'&&o.store===stName&&o.status==='pending'){showBanner('📩 طلب جديد!',o.name+' — '+o.details.substring(0,35),'#e63329');playS('new');}
+    if(role==='store'&&o.store===stName&&o.status==='pending'){showBanner('📩 طلب جديد!',o.name+' — '+o.details.substring(0,35),'#b81a1a');playS('new');}
     if(role==='driver'&&o.status==='available'){showBanner('🟢 طلب جديد!',o.store+' — '+o.street,'#059669');playS('new');}
-    if(role==='driver'&&o.driver===drName&&o.status==='dispatched'){showBanner('✅ قبلت الطلب!',o.store+' — '+o.street,'#0f7c4a');playS('dispatch');}
+    if(role==='driver'&&o.driver===drName&&o.status==='dispatched'){showBanner('✅ قبلت الطلب!',o.store,'#0f7c4a');playS('dispatch');}
     if(role==='client'&&o.phone===cPhone&&['available','dispatched','picked','delivered'].includes(o.status)){
-      const m={available:'🟢 معروض على الموصلين',dispatched:'🚴 الموصل في الطريق',picked:'📦 الموصل إليك!',delivered:'🎉 تم التسليم!'};
+      const m={available:'🔍 جاري البحث عن مندوب',dispatched:'🚴 المندوب في الطريق إليك',picked:'📦 المندوب في الطريق إليك!',delivered:'🎉 تم التوصيل!'};
       showBanner(m[o.status]||'','طلب #'+o.id,'#1a3a6b');playS('soft');
     }
   });
@@ -1355,18 +1175,11 @@ function checkNotifs(newO){
 function showBanner(t,s,c){const b=document.createElement('div');b.className='notif-banner';b.style.background=c;b.innerHTML='<div class="bn-i">🔔</div><div><div class="bn-t">'+t+'</div><div class="bn-s">'+s+'</div></div>';b.onclick=()=>b.remove();document.body.appendChild(b);setTimeout(()=>b.parentNode&&b.remove(),5000);}
 function playS(type){
   if(!sndOn)return;
-  try{
-    if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();
-    if(ctx.state==='suspended')ctx.resume();
-    const p={new:[523,659,784,1047],dispatch:[784,1047,784],soft:[523,659]};
-    const f=p[type]||p.soft;let t=ctx.currentTime;
-    f.forEach((fr,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=fr;g.gain.setValueAtTime(.35,t+i*.15);g.gain.exponentialRampToValueAtTime(.001,t+i*.15+.28);o.start(t+i*.15);o.stop(t+i*.15+.28);});
-  }catch(e){}
+  try{if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();const p={new:[523,659,784,1047],dispatch:[784,1047,784],soft:[523,659]};const f=p[type]||p.soft;let t=ctx.currentTime;f.forEach((fr,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.type='sine';o.frequency.value=fr;g.gain.setValueAtTime(.35,t+i*.15);g.gain.exponentialRampToValueAtTime(.001,t+i*.15+.28);o.start(t+i*.15);o.stop(t+i*.15+.28);});}catch(e){}
 }
 function toggleSound(){if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();sndOn=!sndOn;document.getElementById('sndbtn').textContent=sndOn?'🔔':'🔇';if(sndOn)playS('new');toast(sndOn?'🔔 التنبيهات مفعّلة':'🔇 التنبيهات موقوفة','in');}
 
 // HELPERS
-function ddur(p,d){if(!p||!d)return null;const t=s=>{const[h,m]=s.split(':').map(Number);return h*60+m;};let x=t(d)-t(p);if(x<0)x+=1440;if(x>300||x<0)return null;return x<60?x+' دقيقة':Math.floor(x/60)+' ساعة '+(x%60>0?x%60+' دقيقة':'');}
 function bdg(s){const x=ST[s]||{l:s,c:'b-pend'};return '<span class="bdg '+x.c+'">'+x.l+'</span>';}
 function toast(msg,t='ok'){const w=document.getElementById('toasts'),el=document.createElement('div');el.className='toast t-'+t;el.innerHTML=(t==='ok'?'✅':t==='er'?'❌':'ℹ️')+' '+msg;w.appendChild(el);setTimeout(()=>el.remove(),3200);}
 </script>
