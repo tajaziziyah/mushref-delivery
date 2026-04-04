@@ -536,7 +536,7 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
         <label class="flbl">وصف إضافي (اختياري)</label>
         <input id="cadr" class="finp" placeholder="رقم البيت، علامة مميزة، أي توضيح إضافي...">
       </div>
-      <div><label class="flbl">تفاصيل الطلب *</label><textarea id="cdet" class="ftxt" placeholder="اكتب ما تريد طلبه بالتفصيل..."></textarea></div>
+      <div><label class="flbl">تفاصيل الطلب *</label><textarea id="cdet" class="ftxt" placeholder="اكتب ما تريد طلبه بالتفصيل..." oninput="buildStorePicker()"></textarea></div>
       <div class="fa"><button class="btn btn-red" id="subbtn" onclick="submitOrder()">✅ أرسل الطلب</button></div>
     </div>
   </div>
@@ -1050,6 +1050,29 @@ function recordStoreUsage(name){
   localStorage.setItem('w_store_usage',JSON.stringify(u));
 }
 
+function buildStoreWaMsg(storeName){
+  // اجمع تفاصيل الطلب الحالي إن وجد
+  const det=(document.getElementById('cdet')?.value||'').trim();
+  const addr=(document.getElementById('cadr')?.value||'').trim();
+
+  let msg='مرحباً،\n';
+  msg+='أنا عميل لدى تطبيق *وصّلني* 🚴\n';
+  msg+='أرجو منكم تجهيز الطلبات التالية:\n\n';
+
+  if(det){
+    // قسّم الطلبات بالسطر أو الفاصلة ورقّمها
+    const items=det.split(/\n|،|,/).map(x=>x.trim()).filter(x=>x.length>0);
+    items.forEach((item,i)=>{ msg+=`${i+1}. ${item}\n`; });
+  } else {
+    msg+='1. (اكتب طلبك أولاً في حقل تفاصيل الطلب)\n';
+  }
+
+  if(addr) msg+=`\n📍 العنوان: ${addr}`;
+  msg+='\n\n⚠️ في حال وجود أي صنف غير متوفر،\nيرجى التواصل معنا عبر الواتساب.\n\nشكراً لكم 🙏';
+
+  return encodeURIComponent(msg);
+}
+
 function buildStorePicker(){
   const list=stores.length?stores:STORES_LOCAL;
   const usage=getStoreUsage();
@@ -1063,7 +1086,9 @@ function buildStorePicker(){
   const rest=sorted.filter(s=>(usage[s.name]||0)===0);
   const showAll=document.getElementById('spick-show-all')?.dataset.open==='1';
 
-  const renderRow=(s,isFav)=>`
+  const renderRow=(s,isFav)=>{
+    const waMsg=buildStoreWaMsg(s.name);
+    return `
     <div class="store-row ${selStore===s.name?'sel':''}" onclick="pickSt('${s.name.replace(/'/g,"\\'")}')">
       <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0">
         <div style="font-size:2rem;flex-shrink:0">${s.icon||'🏪'}</div>
@@ -1075,12 +1100,13 @@ function buildStorePicker(){
           <div style="font-size:.75rem;color:var(--muted);margin-top:1px">${s.desc||''}</div>
           <div style="display:flex;gap:6px;margin-top:7px;flex-wrap:wrap" onclick="event.stopPropagation()">
             ${s.phone?`<a href="tel:${s.phone}" style="background:#1a3a6b;color:#fff;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:4px">📞 اتصال</a>`:''}
-            ${s.phone?`<a href="https://wa.me/966${s.phone.substring(1)}?text=${encodeURIComponent('السلام عليكم، أود الطلب من '+s.name)}" target="_blank" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:4px">💬 واتساب</a>`:''}
+            ${s.phone?`<a href="https://wa.me/966${s.phone.substring(1)}?text=${waMsg}" target="_blank" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 12px;font-size:.78rem;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:4px">💬 واتساب</a>`:''}
           </div>
         </div>
       </div>
       <div style="flex-shrink:0;color:${selStore===s.name?'#e65c00':'var(--border)'};font-size:1.3rem">✓</div>
     </div>`;
+  };
 
   let html='';
 
@@ -1427,9 +1453,28 @@ async function submitOrder(){
     const r=await addOrder({name:cName,phone:cPhone,store:selStore,street,details:det,lat:clientLat,lng:clientLng});
     const success=DB_TYPE==='supabase'?Array.isArray(r)&&r.length>0:r.success;
     if(success){
+      // بناء رسالة واتساب للمحل
+      const orderId=Array.isArray(r)?r[0]?.id:'';
+      const storeDat=(stores.length?stores:STORES_LOCAL).find(s=>s.name===selStore);
+      if(storeDat?.phone){
+        const items=det.split(/\n|،|,/).map(x=>x.trim()).filter(x=>x.length>0);
+        let msg='مرحباً 👋\n';
+        msg+=`أنا عميل لدى تطبيق *وصّلني* 🚴\n`;
+        msg+=`━━━━━━━━━━━━━━━\n`;
+        msg+=`📋 *تفاصيل الطلب${orderId?' #'+orderId:''}*\n\n`;
+        items.forEach((item,i)=>{ msg+=`${i+1}. ${item}\n`; });
+        msg+=`\n━━━━━━━━━━━━━━━\n`;
+        msg+=`👤 الاسم: ${cName}\n`;
+        msg+=`📱 الجوال: ${cPhone}\n`;
+        if(street) msg+=`📍 الموقع: ${street}\n`;
+        msg+=`━━━━━━━━━━━━━━━\n`;
+        msg+=`أرجو تجهيز الطلب وإبلاغنا في حال عدم توفر أي صنف عبر الواتساب.\n\nشكراً 🙏`;
+        const waUrl=`https://wa.me/966${storeDat.phone.substring(1)}?text=${encodeURIComponent(msg)}`;
+        setTimeout(()=>window.open(waUrl,'_blank'),800);
+      }
       document.getElementById('cdet').value='';document.getElementById('cadr').value='';
       selStore=null;document.querySelectorAll('.stile').forEach(e=>e.classList.remove('sel'));
-      toast('✅ تم إرسال طلبك — بانتظار المحل','ok');
+      toast('✅ تم إرسال طلبك — سيفتح واتساب المحل','ok');
       await fetchAll();
     }else throw 0;
   }catch(e){toast('❌ خطأ في الإرسال','er');}
