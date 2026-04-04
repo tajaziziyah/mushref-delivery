@@ -140,12 +140,10 @@ main{max-width:1080px;margin:0 auto;padding:20px 15px;}
 .sec-b{padding:20px;}
 
 /* ═══════════ STORE PICKER ═══════════ */
-.spick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
-.stile{background:var(--cream);border:2.5px solid var(--border);border-radius:var(--r);padding:13px 9px;cursor:pointer;text-align:center;transition:all .22s;font-family:'Tajawal',sans-serif;}
-.stile:hover{border-color:var(--blue2);background:var(--blue-light);}
-.stile.sel{border-color:var(--accent);background:#fff5f5;transform:scale(1.03);}
-.stile .ico{font-size:1.65rem;margin-bottom:4px;}
-.stile .nm{font-size:.76rem;font-weight:700;}
+.spick{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.store-row{background:var(--cream);border:2px solid var(--border);border-radius:var(--r);padding:12px 14px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:all .2s;font-family:'Tajawal',sans-serif;}
+.store-row:hover{border-color:var(--blue2);background:var(--white);}
+.store-row.sel{border-color:var(--accent);background:#fff5f5;border-width:2.5px;}
 
 /* ═══════════ MAP ═══════════ */
 .map-wrap{border-radius:var(--r);overflow:hidden;border:2px solid var(--border);margin-bottom:14px;}
@@ -455,8 +453,8 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
   <div class="nav-r">
     <span class="dot" id="sdot"></span>
     <span class="rpill" id="rpill"></span>
-    <button class="nb" id="sndbtn" onclick="toggleSound()">🔇</button>
-    <button class="nb" onclick="openSetup()">⚙️</button>
+    <button class="nb" id="sndbtn" onclick="toggleSound()" style="display:none">🔔</button>
+    <button class="nb" id="setup-btn" onclick="openSetup()">⚙️</button>
     <button class="nb" onclick="logout()">خروج</button>
   </div>
 </div>
@@ -489,31 +487,24 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
         </div>
       </div>
 
-      <div class="fg fg2" style="margin-bottom:13px">
-        <div><label class="flbl">الشارع *</label>
-          <select id="cst" class="fsel">
-            <option value="">-- اختر --</option>
-            <option>شارع أنس بن مالك</option>
-            <option>شارع الظاهر بيبرس</option>
-            <option>شارع مخطة شامان</option>
-          </select>
-        </div>
-        <div><label class="flbl">وصف إضافي</label><input id="cadr" class="finp" placeholder="رقم البيت، علامة مميزة..."></div>
+      <div style="margin-bottom:13px">
+        <label class="flbl">وصف إضافي (اختياري)</label>
+        <input id="cadr" class="finp" placeholder="رقم البيت، علامة مميزة، أي توضيح إضافي...">
       </div>
       <div><label class="flbl">تفاصيل الطلب *</label><textarea id="cdet" class="ftxt" placeholder="اكتب ما تريد طلبه بالتفصيل..."></textarea></div>
       <div class="fa"><button class="btn btn-red" id="subbtn" onclick="submitOrder()">✅ أرسل الطلب</button></div>
     </div>
   </div>
 
+  <!-- الطلبات السابقة — قائمة منسدلة -->
   <div class="sec">
-    <div class="sec-h">
-      <h2>🗂️ سجل طلباتي</h2>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span id="cstats" style="font-size:.77rem;color:var(--muted)"></span>
-        <button class="btn btn-ghost btn-sm" onclick="fetchAndRender()">🔄</button>
-      </div>
+    <div class="sec-h" onclick="toggleOrders()" style="cursor:pointer;user-select:none">
+      <h2>🗂️ طلباتي السابقة <span id="orders-arrow" style="font-size:.85rem;color:var(--muted)">▼</span></h2>
+      <span id="cstats" style="font-size:.77rem;color:var(--muted)"></span>
     </div>
-    <div class="sec-b"><div id="clist"><div style="text-align:center;padding:28px;color:var(--muted)">جاري التحميل...</div></div></div>
+    <div id="orders-collapse" style="display:none">
+      <div class="sec-b"><div id="clist"><div style="text-align:center;padding:28px;color:var(--muted)">جاري التحميل...</div></div></div>
+    </div>
   </div>
 </div>
 
@@ -715,8 +706,8 @@ tbody td{padding:11px 13px;font-size:.85rem;vertical-align:middle;}
 // ══════════════════════════════════════════════════════════
 // CONFIG & STATE
 // ══════════════════════════════════════════════════════════
-const ADMIN_PIN = '4444';
-const DRV_PINS  = {'3333':'أحمد','3344':'سعد','3355':'فهد','3366':'خالد'};
+const ADMIN_PIN = '444444';
+const DRV_PINS  = {'333333':'أحمد','334444':'سعد','335555':'فهد','336666':'خالد'};
 const ST = {
   pending:  {l:'⏳ معلق',        c:'b-pend'},
   available:{l:'🟢 معروض',       c:'b-avail'},
@@ -731,7 +722,7 @@ let SB_URL='https://kypngjpyjvzssutvlyih.supabase.co';
 let SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5cG5nanB5anZ6c3N1dHZseWloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyODA3MjMsImV4cCI6MjA5MDg1NjcyM30.JqvaS4HhlEghcKOlvIwovhNfdZK8H3lKrHLYThnMOgA';
 let GS_URL='', DB_TYPE='supabase';
 let role=null, drName=null, stName=null, stPin=null, cPhone=null, cName=null;
-let selStore=null, clientLat=null, clientLng=null;
+let selStore=null, clientLat=null, clientLng=null, clientStreet='';
 let orders=[], stores=[], drivers=[];
 let seen=new Set(), sndOn=false, ctx=null, timer=null;
 let mapClient=null, mapDriver=null, mapAdmin=null;
@@ -969,26 +960,37 @@ async function updateDriverPos(lat,lng){
 // STORES LOCAL (للـ Sheets)
 // ══════════════════════════════════════════════════════════
 const STORES_LOCAL=[
-  {name:'بقالة مشرف',icon:'🛒',pin:'2001',lat:24.1520,lng:47.3250},
-  {name:'مطعم مندي الخرج',icon:'🍔',pin:'2002',lat:24.1525,lng:47.3255},
-  {name:'ورود وهدايا',icon:'🌹',pin:'2003',lat:24.1515,lng:47.3245},
-  {name:'محل الشاهي',icon:'🍵',pin:'2004',lat:24.1530,lng:47.3260},
-  {name:'كوفي الدانة',icon:'☕',pin:'2005',lat:24.1510,lng:47.3240},
-  {name:'لقيمات',icon:'🍩',pin:'2006',lat:24.1535,lng:47.3265},
-  {name:'فوال تميس',icon:'🫘',pin:'2007',lat:24.1505,lng:47.3235},
-  {name:'مغسلة ملابس',icon:'🧺',pin:'2008',lat:24.1540,lng:47.3270},
-  {name:'محل حلويات',icon:'🍬',pin:'2009',lat:24.1500,lng:47.3230},
-  {name:'فطائر',icon:'🥟',pin:'2010',lat:24.1545,lng:47.3275},
-  {name:'خضروات وفواكه',icon:'🥦',pin:'2011',lat:24.1495,lng:47.3225},
-  {name:'ملحمة',icon:'🥩',pin:'2012',lat:24.1550,lng:47.3280},
-  {name:'مطبق وسمبوسة',icon:'🥠',pin:'2013',lat:24.1490,lng:47.3220},
+  {name:'بقالة مشرف',     icon:'🛒',pin:'200100',lat:24.1520,lng:47.3250,phone:'0501234567',desc:'بقالة متكاملة — خضار وطعام ومواد غذائية'},
+  {name:'مطعم مندي الخرج',icon:'🍔',pin:'200200',lat:24.1525,lng:47.3255,phone:'0502345678',desc:'مندي وكبسة ومشاوي'},
+  {name:'ورود وهدايا',    icon:'🌹',pin:'200300',lat:24.1515,lng:47.3245,phone:'0503456789',desc:'باقات ورد وهدايا مميزة'},
+  {name:'محل الشاهي',     icon:'🍵',pin:'200400',lat:24.1530,lng:47.3260,phone:'0504567890',desc:'شاي وقهوة وتمر'},
+  {name:'كوفي الدانة',    icon:'☕',pin:'200500',lat:24.1510,lng:47.3240,phone:'0505678901',desc:'مشروبات ساخنة وباردة'},
+  {name:'لقيمات',         icon:'🍩',pin:'200600',lat:24.1535,lng:47.3265,phone:'0506789012',desc:'لقيمات طازجة يومياً'},
+  {name:'فوال تميس',      icon:'🫘',pin:'200700',lat:24.1505,lng:47.3235,phone:'0507890123',desc:'فول وتميس وفطور'},
+  {name:'مغسلة ملابس',   icon:'🧺',pin:'200800',lat:24.1540,lng:47.3270,phone:'0508901234',desc:'غسيل وكي وتنظيف جاف'},
+  {name:'محل حلويات',     icon:'🍬',pin:'200900',lat:24.1500,lng:47.3230,phone:'0509012345',desc:'حلويات شرقية وغربية'},
+  {name:'فطائر',          icon:'🥟',pin:'201000',lat:24.1545,lng:47.3275,phone:'0500123456',desc:'فطائر بأنواعها'},
+  {name:'خضروات وفواكه',  icon:'🥦',pin:'201100',lat:24.1495,lng:47.3225,phone:'0511234567',desc:'خضار وفواكه طازجة'},
+  {name:'ملحمة',          icon:'🥩',pin:'201200',lat:24.1550,lng:47.3280,phone:'0512345678',desc:'لحوم ودجاج طازج'},
+  {name:'مطبق وسمبوسة',   icon:'🥠',pin:'201300',lat:24.1490,lng:47.3220,phone:'0513456789',desc:'مطبق وسمبوسة ومشبك'},
 ];
 
 function buildStorePicker(){
   const list=stores.length?stores:STORES_LOCAL;
   document.getElementById('spick').innerHTML=list.map(s=>
-    `<div class="stile" onclick="pickSt('${s.name}')" id="st_${s.name.replace(/\s/g,'_')}">
-       <div class="ico">${s.icon||'🏪'}</div><div class="nm">${s.name}</div></div>`).join('');
+    `<div class="store-row ${selStore===s.name?'sel':''}" onclick="pickSt('${s.name}')" id="st_${s.name.replace(/[\s]/g,'_')}">
+      <div style="display:flex;align-items:center;gap:12px;flex:1">
+        <div style="font-size:1.8rem;flex-shrink:0">${s.icon||'🏪'}</div>
+        <div style="flex:1">
+          <div style="font-size:.98rem;font-weight:800">${s.name}</div>
+          <div style="font-size:.76rem;color:var(--muted);margin-top:2px">${s.desc||''}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:7px;flex-shrink:0" onclick="event.stopPropagation()">
+        ${s.phone?`<a href="tel:${s.phone}" style="background:var(--green);color:#fff;border-radius:8px;padding:6px 10px;font-size:.76rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">📞 اتصال</a>`:''}
+        ${s.phone?`<a href="https://wa.me/966${s.phone.substring(1)}?text=السلام عليكم، أود الطلب من ${s.name}" target="_blank" style="background:#25D366;color:#fff;border-radius:8px;padding:6px 10px;font-size:.76rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">💬 واتساب</a>`:''}
+      </div>
+    </div>`).join('');
 }
 function pickSt(n){
   selStore=n;
@@ -1005,12 +1007,19 @@ function pickSt(n){
 // ══════════════════════════════════════════════════════════
 const DEFAULT_LAT=24.1520, DEFAULT_LNG=47.3250;
 
+async function reverseGeocode(lat,lng){
+  try{
+    const r=await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=ar`);
+    const d=await r.json();
+    return d.address?.road||d.address?.suburb||d.address?.neighbourhood||'';
+  }catch(e){return '';}
+}
+
 function initClientMap(){
   if(mapClient) return;
   mapClient=L.map('map-client',{zoomControl:true,attributionControl:false}).setView([DEFAULT_LAT,DEFAULT_LNG],15);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(mapClient);
 
-  // إضافة المحلات على الخريطة
   const list=stores.length?stores:STORES_LOCAL;
   list.forEach(s=>{
     if(s.lat&&s.lng){
@@ -1018,27 +1027,26 @@ function initClientMap(){
     }
   });
 
-  // النقر على الخريطة لتحديد موقع العميل
-  mapClient.on('click',e=>{
-    clientLat=e.latlng.lat.toFixed(6);
-    clientLng=e.latlng.lng.toFixed(6);
+  async function setClientLocation(lat,lng){
+    clientLat=lat.toFixed(6); clientLng=lng.toFixed(6);
     if(clientMarker) mapClient.removeLayer(clientMarker);
-    clientMarker=L.marker([clientLat,clientLng],{
-      icon:L.divIcon({className:'',html:'<div style="background:var(--accent);width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3)"></div>',iconAnchor:[9,9]})
+    clientMarker=L.marker([lat,lng],{
+      icon:L.divIcon({className:'',html:'<div style="background:var(--accent);width:20px;height:20px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.4)"></div>',iconAnchor:[10,10]})
     }).addTo(mapClient).bindPopup('📍 موقعك').openPopup();
-    document.getElementById('map-client-status').innerHTML='<span style="color:var(--green);font-weight:700">✅ تم تحديد موقعك — يمكنك تغييره بالنقر مجدداً</span>';
-  });
+    const street=await reverseGeocode(lat,lng);
+    clientStreet=street;
+    const st=document.getElementById('map-client-status');
+    if(st) st.innerHTML=`<span style="color:var(--green);font-weight:700">✅ ${street||'تم تحديد موقعك'} — انقر لتغيير الموقع</span>`;
+  }
 
-  // GPS تلقائي
+  mapClient.on('click',e=>setClientLocation(e.latlng.lat,e.latlng.lng));
+
+  // GPS تلقائي فوراً
   mapClient.locate({setView:true,maxZoom:16});
-  mapClient.on('locationfound',e=>{
-    clientLat=e.latlng.lat.toFixed(6);
-    clientLng=e.latlng.lng.toFixed(6);
-    if(clientMarker) mapClient.removeLayer(clientMarker);
-    clientMarker=L.marker([e.latlng],{
-      icon:L.divIcon({className:'',html:'<div style="background:var(--accent);width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3)"></div>',iconAnchor:[9,9]})
-    }).addTo(mapClient).bindPopup('📍 موقعك').openPopup();
-    document.getElementById('map-client-status').innerHTML='<span style="color:var(--green);font-weight:700">✅ تم تحديد موقعك تلقائياً</span>';
+  mapClient.on('locationfound',e=>setClientLocation(e.latlng.lat,e.latlng.lng));
+  mapClient.on('locationerror',()=>{
+    const st=document.getElementById('map-client-status');
+    if(st) st.innerHTML='<span style="color:var(--accent);font-weight:700">⚠️ انقر على الخريطة لتحديد موقعك</span>';
   });
 }
 
@@ -1113,6 +1121,20 @@ function refreshAdminMap(){
 // ══════════════════════════════════════════════════════════
 // LOGIN
 // ══════════════════════════════════════════════════════════
+function toggleOrders(){
+  const el=document.getElementById('orders-collapse');
+  const arrow=document.getElementById('orders-arrow');
+  if(el.style.display==='none'){el.style.display='block';arrow.textContent='▲';}
+  else{el.style.display='none';arrow.textContent='▼';}
+}
+
+function showHiddenRoles(){
+  const el=document.getElementById('hidden-roles');
+  const btn=document.getElementById('hidden-roles-btn');
+  if(el.style.display==='none'){el.style.display='block';btn.textContent='▲';}
+  else{el.style.display='none';btn.textContent='···';}
+}
+
 function pickRole(r){
   pRole=r;
   document.querySelectorAll('.rc').forEach(c=>c.classList.remove('sel'));
@@ -1181,6 +1203,11 @@ function enterApp(){
     document.getElementById('dtitle').textContent='📦 طلباتي — '+drName;
   }
   showPage('pg-'+role);
+  // إخفاء الإعدادات عن العميل والمحل
+  const setupBtn=document.getElementById('setup-btn');
+  if(setupBtn) setupBtn.style.display=(role==='admin'||role==='driver')?'':'none';
+  // تشغيل الصوت تلقائياً
+  try{if(!ctx)ctx=new(window.AudioContext||window.webkitAudioContext)();sndOn=true;document.getElementById('sndbtn').textContent='🔔';}catch(e){}
   fetchAll();
   const interval=role==='driver'?5000:8000;
   timer=setInterval(fetchAll,interval);
@@ -1241,18 +1268,18 @@ function ddur(p,d){
 // CLIENT RENDER
 // ══════════════════════════════════════════════════════════
 async function submitOrder(){
-  const street=document.getElementById('cst').value;
   const addr=document.getElementById('cadr').value.trim();
   const det=document.getElementById('cdet').value.trim();
   if(!selStore){toast('يرجى اختيار المحل','er');return;}
-  if(!clientLat||!clientLng){toast('يرجى تحديد موقعك على الخريطة','er');return;}
-  if(!street||!det){toast('يرجى اختيار الشارع وكتابة تفاصيل الطلب','er');return;}
+  if(!clientLat||!clientLng){toast('يرجى تحديد موقعك على الخريطة أولاً','er');return;}
+  if(!det){toast('يرجى كتابة تفاصيل الطلب','er');return;}
+  const street=clientStreet+(addr?' — '+addr:'');
   const btn=document.getElementById('subbtn');btn.disabled=true;btn.textContent='⏳ جاري...';
   try{
-    const r=await addOrder({name:cName,phone:cPhone,store:selStore,street:street+(addr?' — '+addr:''),details:det,lat:clientLat,lng:clientLng});
+    const r=await addOrder({name:cName,phone:cPhone,store:selStore,street,details:det,lat:clientLat,lng:clientLng});
     const success=DB_TYPE==='supabase'?Array.isArray(r)&&r.length>0:r.success;
     if(success){
-      document.getElementById('cdet').value='';document.getElementById('cst').value='';document.getElementById('cadr').value='';
+      document.getElementById('cdet').value='';document.getElementById('cadr').value='';
       selStore=null;document.querySelectorAll('.stile').forEach(e=>e.classList.remove('sel'));
       toast('✅ تم إرسال طلبك — بانتظار المحل','ok');
       await fetchAll();
@@ -1270,30 +1297,43 @@ function renderClient(){
   if(!mine.length){el.innerHTML=`<div style="text-align:center;padding:34px;color:var(--muted)"><div style="font-size:3.5rem;margin-bottom:12px">📭</div><div style="font-size:1.1rem;font-weight:800;margin-bottom:6px">لا توجد طلبات بعد</div><div style="font-size:.88rem">طلباتك ستظهر هنا</div></div>`;return;}
   const steps=['pending','available','dispatched','picked','delivered'];
   const sI=['📤','🟢','🚴','📦','🎉'],sL=['أُرسل','معروض','موصل','بالطريق','وصل'];
-  el.innerHTML=mine.map(o=>{
-    const idx=steps.indexOf(o.status),pct=o.status==='rejected'?0:Math.max(0,(idx/(steps.length-1))*100);
+  el.innerHTML=mine.map((o,idx2)=>{
     const d=ddur(o.pickedTime,o.deliveredTime),isDone=o.status==='delivered';
-    let msg='';
-    if(o.status==='pending')   msg=`<div class="note n-warn">⏳ بانتظار اعتماد المحل...</div>`;
-    if(o.status==='available') msg=`<div class="note n-go">🟢 طلبك معروض على الموصلين — سيُقبل قريباً</div>`;
-    if(o.status==='dispatched')msg=`<div class="note n-info">🚴 الموصل <b>${o.driver}</b> في طريقه للمحل</div>`;
-    if(o.status==='picked')    msg=`<div class="note n-hot">📦 الموصل <b>${o.driver}</b> في الطريق إليك الآن!</div>`;
-    if(o.status==='rejected')  msg=`<div class="note n-err">❌ تم رفض الطلب من المحل</div>`;
-    const mpBtn=(o.lat&&o.lng)?`<a href="https://maps.google.com/?q=${o.lat},${o.lng}" target="_blank" style="font-size:.76rem;color:var(--blue2);font-weight:700">🗺️ موقعي</a>`:'';
-    return `<div class="oc-client ${isDone?'done':!['delivered','rejected','pending'].includes(o.status)?'active':''}">
-      <div class="oc-top"><div><span class="oc-store">🏬 ${o.store}</span></div>
-        <div style="display:flex;align-items:center;gap:9px">${mpBtn}${bdg(o.status)}<span class="oc-time">📅 ${o.time}</span></div>
+    const statusIcon={pending:'⏳',available:'🟢',dispatched:'🚴',picked:'📦',delivered:'🎉',rejected:'❌'}[o.status]||'⏳';
+    const statusColor={pending:'#b45309',available:'var(--green)',dispatched:'var(--blue)',picked:'#9a3412',delivered:'var(--green)',rejected:'var(--accent)'}[o.status]||'var(--muted)';
+    return `<div style="background:var(--white);border:2px solid var(--border);border-radius:var(--r);padding:13px 16px;margin-bottom:8px;transition:all .2s;${isDone?'border-color:var(--green)':['available','dispatched','picked'].includes(o.status)?'border-color:var(--accent2)':''}" onclick="toggleOrderDetail(${o.id})">
+      <!-- سطر الطلب الرئيسي -->
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+        <div style="display:flex;align-items:center;gap:9px;flex:1;min-width:0">
+          <div style="font-size:1.2rem;flex-shrink:0">${o.store?((stores.length?stores:STORES_LOCAL).find(s=>s.name===o.store)?.icon||'🏪'):'🏪'}</div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:.92rem;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${o.store}</div>
+            <div style="font-size:.76rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${o.details.substring(0,35)}${o.details.length>35?'...':''}</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0">
+          <div style="display:flex;align-items:center;gap:5px">
+            <span style="font-size:1rem">${statusIcon}</span>
+            <span style="font-size:.74rem;font-weight:800;color:${statusColor}">${ST[o.status]?.l||o.status}</span>
+          </div>
+          <span style="font-size:.7rem;color:var(--muted)">${o.time.substring(5,16)}</span>
+        </div>
       </div>
-      <div class="oc-items"><div class="l">🛒 الأغراض المطلوبة</div><div class="v">${o.details}</div></div>
-      <div class="oc-info">
-        <div class="oc-cell"><div class="l">📍 العنوان</div><div class="v">${o.street}</div></div>
-        <div class="oc-cell"><div class="l">🚴 الموصل</div><div class="v" style="color:${o.driver?'var(--blue)':'var(--muted)'}">${o.driver||'لم يُحدد'}</div></div>
-        <div class="oc-cell"><div class="l">💰 رسوم التوصيل</div><div class="v" style="color:var(--accent)">5 ريال</div></div>
-        <div class="oc-cell"><div class="l">⏱️ مدة التوصيل</div><div class="v" style="color:${d?'var(--green)':'var(--muted)'}">${d||'—'}</div></div>
+      <!-- تفاصيل قابلة للطي -->
+      <div id="od-${o.id}" style="display:none;margin-top:11px;padding-top:11px;border-top:1px solid var(--border)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+          <div style="background:var(--cream);border-radius:9px;padding:9px 11px"><div style="font-size:.68rem;color:var(--muted);margin-bottom:2px">📍 العنوان</div><div style="font-size:.86rem;font-weight:700">${o.street||'—'}</div></div>
+          <div style="background:var(--cream);border-radius:9px;padding:9px 11px"><div style="font-size:.68rem;color:var(--muted);margin-bottom:2px">🚴 الموصل</div><div style="font-size:.86rem;font-weight:700;color:${o.driver?'var(--blue)':'var(--muted)'}">${o.driver||'لم يُحدد'}</div></div>
+          <div style="background:var(--cream);border-radius:9px;padding:9px 11px"><div style="font-size:.68rem;color:var(--muted);margin-bottom:2px">💰 رسوم التوصيل</div><div style="font-size:.86rem;font-weight:800;color:var(--accent)">5 ريال</div></div>
+          <div style="background:var(--cream);border-radius:9px;padding:9px 11px"><div style="font-size:.68rem;color:var(--muted);margin-bottom:2px">⏱️ مدة التوصيل</div><div style="font-size:.86rem;font-weight:700;color:${d?'var(--green)':'var(--muted)'}">${d||'—'}</div></div>
+        </div>
+        ${isDone?`<div style="background:var(--green);border-radius:9px;padding:10px;color:#fff;font-weight:800;text-align:center">🎉 تم التسليم${d?` — ⏱️ ${d}`:''}</div>`:''}
+        ${o.status==='pending'   ?`<div class="note n-warn">⏳ بانتظار اعتماد المحل...</div>`:''}
+        ${o.status==='available' ?`<div class="note n-go">🟢 طلبك معروض على الموصلين</div>`:''}
+        ${o.status==='dispatched'?`<div class="note n-info">🚴 الموصل <b>${o.driver}</b> في طريقه للمحل</div>`:''}
+        ${o.status==='picked'    ?`<div class="note n-hot">📦 الموصل <b>${o.driver}</b> في الطريق إليك!</div>`:''}
+        ${o.status==='rejected'  ?`<div class="note n-err">❌ تم رفض الطلب من المحل</div>`:''}
       </div>
-      ${isDone?`<div class="oc-success">🎉 تم التسليم بنجاح!${d?` &nbsp;⏱️ ${d}`:''}</div>`:''}
-      ${!isDone&&o.status!=='rejected'?`<div style="padding:0 18px 14px"><div class="track"><div class="tl"></div><div class="tp" style="width:${pct}%"></div><div class="ts-wrap">${steps.map((s,i)=>`<div class="ts"><div class="ts-d ${i<idx?'done':i===idx?'now':''}">${i<idx?'✓':sI[i]}</div><div class="ts-l ${i===idx?'now':''}">${sL[i]}</div></div>`).join('')}</div></div></div>`:''}
-      <div style="padding:0 18px ${msg?'2px':'14px'}">${msg}</div>
     </div>`;
   }).join('');
 }
@@ -1551,6 +1591,10 @@ function checkNotifs(newO){
     }
   });
 }
+function autoEnableSound(){
+  if(!sndOn&&ctx){sndOn=true;}
+}
+
 function showBanner(t,s,c){
   const b=document.createElement('div');b.className='notif-banner';b.style.background=c;
   b.innerHTML=`<div class="bn-i">🔔</div><div><div class="bn-t">${t}</div><div class="bn-s">${s}</div></div>`;
@@ -1577,6 +1621,11 @@ function toggleSound(){
 // ══════════════════════════════════════════════════════════
 // HELPERS
 // ══════════════════════════════════════════════════════════
+function toggleOrderDetail(id){
+  const el=document.getElementById('od-'+id);
+  if(el) el.style.display=el.style.display==='none'?'block':'none';
+}
+
 function bdg(s){const x=ST[s]||{l:s,c:'b-pend'};return `<span class="bdg ${x.c}">${x.l}</span>`;}
 function toast(msg,t='ok'){
   const w=document.getElementById('toasts'),el=document.createElement('div');
