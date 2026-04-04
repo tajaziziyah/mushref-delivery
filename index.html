@@ -726,7 +726,10 @@ const ST = {
   rejected: {l:'❌ مرفوض',      c:'b-rej'},
 };
 
-let SB_URL='', SB_KEY='', GS_URL='', DB_TYPE='';
+// ═══ المفاتيح مدمجة — لا يحتاج أحد يدخلها ═══
+let SB_URL='https://kypngjpyjvzssutvlyih.supabase.co';
+let SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt5cG5nanB5anZ6c3N1dHZseWloIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyODA3MjMsImV4cCI6MjA5MDg1NjcyM30.JqvaS4HhlEghcKOlvIwovhNfdZK8H3lKrHLYThnMOgA';
+let GS_URL='', DB_TYPE='supabase';
 let role=null, drName=null, stName=null, stPin=null, cPhone=null, cName=null;
 let selStore=null, clientLat=null, clientLng=null;
 let orders=[], stores=[], drivers=[];
@@ -818,19 +821,15 @@ function gotoLogin(){
 // INIT
 // ══════════════════════════════════════════════════════════
 window.onload=()=>{
-  // استعادة الإعدادات
-  DB_TYPE=localStorage.getItem('w_db')||'';
-  SB_URL=localStorage.getItem('w_sburl')||'';
-  SB_KEY=localStorage.getItem('w_sbkey')||'';
-  GS_URL=localStorage.getItem('w_gsurl')||'';
+  // المفاتيح مدمجة — تخطي الإعداد مباشرة
+  localStorage.setItem('w_db','supabase');
+  localStorage.setItem('w_sburl',SB_URL);
+  localStorage.setItem('w_sbkey',SB_KEY);
   cPhone=localStorage.getItem('w_phone')||null;
   cName=localStorage.getItem('w_cname')||null;
-
-  if(DB_TYPE){
-    document.getElementById('setup').style.display='none';
-    if(cPhone&&cName){ setTimeout(autoClient,200); }
-    else{ document.getElementById('login').style.display='block'; buildStorePicker(); }
-  }
+  document.getElementById('setup').style.display='none';
+  if(cPhone&&cName){ setTimeout(autoClient,200); }
+  else{ document.getElementById('login').style.display='block'; buildStorePicker(); }
 };
 
 // ══════════════════════════════════════════════════════════
